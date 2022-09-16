@@ -1,0 +1,65 @@
+.sidebar-wrapper{
+    background:  rgba(241, 244, 247, 1);
+    border-radius: 15px;
+}
+.sidebar-content{
+    padding: 10px 9px;
+}
+.sidebar-content-nav{
+    margin-bottom: 5rem;
+}
+.sidebar-content-links{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 0;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    margin: 3px 0;
+}
+.sidebar-content-links svg{
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+.sidebar-content-links h6{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+
+/* help section */
+
+.sidebar-content-help-nav{
+    margin-top: 5rem;
+}
+.sidebar-content-help-links{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px 0;
+    text-decoration: none;
+    color: black;
+}
+.sidebar-content-help-links svg{
+    font-size: 1.8rem;
+    color: rgba(165, 215, 236, 1);
+    margin-bottom: 5px;
+}
+.sidebar-content-help-links h6{
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+
+/* acive content */
+.active-block{
+    background: white;
+    border-radius: 10px;
+}
+.active-icon{
+    color: rgba(248, 177, 24, 1);
+}
