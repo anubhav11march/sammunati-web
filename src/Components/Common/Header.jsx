@@ -22,13 +22,13 @@ function Header({langChange}) {
                                     Language
                                 </button>
                                 <ul className="dropdown-menu mt-2">
-                                    <li className="dropdown-item" value="hindi" onClick={(e)=>{langChange(e.target.__reactProps$qsae94wcrm.value)}} >हिन्दी</li>
-                                    <li><a className="dropdown-item" value="english" onChange={(e)=>{langChange(e.target.__reactProps$qsae94wcrm.value)}} href="#">English</a></li>
-                                    <li><a className="dropdown-item" value="marathi" onClick={(e)=>{langChange(e.target.__reactProps$qsae94wcrm.value)}} href="#">मराठी</a></li>
-                                    <li><a className="dropdown-item" value="bandi" onClick={(e)=>{langChange(e.target.__reactProps$qsae94wcrm.value)}} href="#">బండి</a></li>
-                                    <li><a className="dropdown-item" value="tamil" onClick={(e)=>{langChange(e.target.__reactProps$qsae94wcrm.value)}} href="#">தமிழ்</a></li>
-                                    <li><a className="dropdown-item" value="arabic" onClick={(e)=>{langChange(e.target.__reactProps$qsae94wcrm.value)}} href="#">عربى</a></li>
-                                    <li><a className="dropdown-item" value="urdu" onClick={(e)=>{langChange(e.target.__reactProps$qsae94wcrm.value)}} href="#">اردو</a></li>
+                                    <li className="dropdown-item" value="hindi" onClick={(e)=>{langChange(e?.target)}} >हिन्दी</li>
+                                    <li><a className="dropdown-item" value="english" onChange={(e)=>{langChange(e?.target?.__reactProps$qsae94wcrm?.value)}} href="#">English</a></li>
+                                    <li><a className="dropdown-item" value="marathi" onClick={(e)=>{langChange(e?.target?.__reactProps$qsae94wcrm?.value)}} href="#">मराठी</a></li>
+                                    <li><a className="dropdown-item" value="bandi" onClick={(e)=>{langChange(e?.target?.__reactProps$qsae94wcrm?.value)}} href="#">బండి</a></li>
+                                    <li><a className="dropdown-item" value="tamil" onClick={(e)=>{langChange(e?.target?.__reactProps$qsae94wcrm?.value)}} href="#">தமிழ்</a></li>
+                                    <li><a className="dropdown-item" value="arabic" onClick={(e)=>{langChange(e?.target?.__reactProps$qsae94wcrm?.value)}} href="#">عربى</a></li>
+                                    <li><a className="dropdown-item" value="urdu" onClick={(e)=>{langChange(e?.target?.__reactProps$qsae94wcrm?.value)}} href="#">اردو</a></li>
                                 </ul>
                             </div>
 
