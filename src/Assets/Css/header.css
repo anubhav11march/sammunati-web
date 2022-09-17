@@ -2,4 +2,5 @@
     background-color: rgba(241, 244, 247, 1);
 }
 .logo-container img{
+    cursor: pointer;
 }

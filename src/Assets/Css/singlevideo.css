@@ -1,0 +1,14 @@
+.video-detail-head h3{
+    font-size: 2rem;
+    font-weight: 600;
+}   
+.video-description figure img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.video-description figure figcaption{
+    font-size: 1rem;
+    font-weight: 600;
+}

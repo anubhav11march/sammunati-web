@@ -1,0 +1,44 @@
+.card-custom-body {
+background-color: rgba(239, 242, 246, 1);
+}    
+.card-custom-body h5{
+    font-size: 1.2rem;
+    font-weight: 700;
+    max-height: 4.4rem;
+    overflow: hidden;
+    display: block;
+    -webkit-line-clamp: 2;
+    display: box;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    white-space: normal;
+    
+}
+.card-custom-body p{
+    max-height: 4rem;
+    overflow: hidden;
+    display: block;
+    -webkit-line-clamp: 2;
+    display: box;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+.upload-details p{
+    font-size: 0.9rem ;
+}
+.upload-Text  {
+    font-weight: 500;
+ }
+ .card-video-length{
+    font-size: 0.8rem;
+    position: absolute;
+    background-color: rgb(46, 45, 45);
+    border-radius: 4px;
+    color: white;
+    padding: 4px;
+    right: 4%;
+    top: 38%;
+ }

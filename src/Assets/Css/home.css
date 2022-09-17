@@ -1,0 +1,9 @@
+.home-container{
+    width: 100%;
+}
+.home-wrapper{
+    height:87vh;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}

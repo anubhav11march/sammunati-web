@@ -34,17 +34,17 @@ function Sidebar() {
                         </Link>
 
                         <Link to={'/playlist'} className={`sidebar-content-links ${location.pathname ==="/playlist" ? ("active-block"):(null)} `}>
-                            <SubscriptionsIcon />
+                            <SubscriptionsIcon className={`${location.pathname ==="/playlist" ? ("active-icon"):(null)}`}  />
                             <h6>Playlist</h6>
                         </Link>
 
                         <Link to={'/categories'} className={`sidebar-content-links ${location.pathname ==="/categories" ? ("active-block"):(null)} `}>
-                            <ListIcon />
+                            <ListIcon className={`${location.pathname ==="/categories" ? ("active-icon"):(null)}`}/>
                             <h6>Categories</h6>
                         </Link>
 
                         <Link to={'/blogs'} className={`sidebar-content-links ${location.pathname ==="/blogs" ? ("active-block"):(null)} `}>
-                            <ArticleIcon />
+                            <ArticleIcon className={`${location.pathname ==="/blogs" ? ("active-icon"):(null)}`}/>
                             <h6>Blogs</h6>
                         </Link>
                     </nav>
@@ -53,15 +53,15 @@ function Sidebar() {
 
                     <nav className='sidebar-content-help-nav'>
                         <Link to={'/query'} className={`sidebar-content-help-links ${location.pathname ==="/query" ? ("active-block"):(null)} `}>
-                            <QuestionAnswerIcon />
+                            <QuestionAnswerIcon className={`${location.pathname ==="/query" ? ("active-icon"):(null)}`}/>
                             <h6>Query</h6>
                         </Link>
                         <Link to={'/faq'} className={`sidebar-content-help-links ${location.pathname ==="/faq" ? ("active-block"):(null)} `}>
-                            <ContactSupportIcon />
+                            <ContactSupportIcon className={`${location.pathname ==="/faq" ? ("active-icon"):(null)}`}/>
                             <h6>FAQ</h6>
                         </Link>
                         <Link to={'/contactus'} className={`sidebar-content-help-links ${location.pathname ==="/contactus" ? ("active-block"):(null)} `}>
-                            <PhoneIcon />
+                            <PhoneIcon className={`${location.pathname ==="/contactus" ? ("active-icon"):(null)}`}/>
                             <h6>Contact Us</h6>
                         </Link>
                     </nav>
