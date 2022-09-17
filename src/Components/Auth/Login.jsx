@@ -3,7 +3,9 @@ import '../../Assets/Css/login.css'
 import logo from '../../Assets/Images/logo.png'
 import Googlelogo from '../../Assets/Images/googleicon.png'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 function Login() {
+    const navigate = useNavigate();
     return (
         <>
         <section className="d-flex justify-content-center align-items-center w-100 " style={{height:"100vh"}}> 
@@ -43,7 +45,7 @@ function Login() {
                     </div>
                 </div>
 
-                <button type="button" className="btn text-white  w-100 py-2 mb-4" style={{backgroundColor:"rgba(4, 195, 92, 1)"}}>Login Now</button>
+                <button type="button" onClick={()=>navigate('/home')} className="btn text-white  w-100 py-2 mb-4" style={{backgroundColor:"rgba(4, 195, 92, 1)"}}>Login Now</button>
                 <button type="button" className="btn text-white d-flex py-2 align-items-center justify-content-center google-button  w-100 mb-4" style={{backgroundColor:"rgba(45, 55, 72, 1)"}}>
                 <img src={Googlelogo} alt="" />
                 Or sign-in with google</button>

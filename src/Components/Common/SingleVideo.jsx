@@ -7,7 +7,7 @@ import channelLogo from '../../Assets/Images/cardImage.jpg'
 function SingleVideo() {
   return (
     <>
-      <section className='flex-column container-fluid px-0 '>
+      <section className='flex-column container-fluid px-0  '>
         <ReactPlayer width="100%" height="60vh" controls url='https://youtu.be/9CvwbW9UhJc' />
         <main className='video-detail-wrapper container py-5 '>
           <div className='col-10'>

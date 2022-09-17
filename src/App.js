@@ -8,12 +8,13 @@ import { Route, Routes } from 'react-router-dom'
 import SingleVideo from './Components/Common/SingleVideo'
 import { Outlet } from 'react-router-dom';
 import Login from './Components/Auth/Login'
+import { useLocation } from 'react-router-dom'
 
 function App() {
-
+  const location=useLocation()
   const [language, setlanguage] = useState("");
+
   const handleLanguage = (data) => {
-    console.log(data)
     setlanguage(data);
   }
   const SidebarLayout = () => (
@@ -22,10 +23,11 @@ function App() {
       <Outlet />
     </>
   );
+  console.log(window.location)
   return (
     <>
       {
-        window.location.pathname !== '/' ? (<Header langChange = {handleLanguage}/>):("")
+        location.pathname === '/' ? (null):(<Header langChange = {handleLanguage}/>)
       }
       
       <div className='container-fluid px-0 d-flex'>
