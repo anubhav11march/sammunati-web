@@ -28,13 +28,13 @@ function Sidebar() {
                    {/* video buttons  */}
 
                     <nav className="sidebar-content-nav">
-                        <Link to={'/home'} className={`sidebar-content-links ${location.pathname ==="/home" ? ("active-block"):(null)} `}>
-                            <VideocamIcon className={`${location.pathname ==="/home" ? ("active-icon"):(null)}`}/>
+                        <Link to={'/'} className={`sidebar-content-links ${location.pathname ==="/" ? ("active-block"):(null)} `}>
+                            <VideocamIcon className={`${location.pathname ==="/" ? ("active-icon"):(null)}`}/>
                             <h6>Home</h6>
                         </Link>
 
                         <Link to={'/playlist'} className={`sidebar-content-links ${location.pathname ==="/playlist" ? ("active-block"):(null)} `}>
-                            <SubscriptionsIcon className={`${location.pathname ==="/playlist" ? ("active-icon"):(null)}`}  />
+                            <SubscriptionsIcon className={`${location.pathname.includes("/playlist") ? ("active-icon"):(null)}`}  />
                             <h6>Playlist</h6>
                         </Link>
 

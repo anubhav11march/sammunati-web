@@ -1,0 +1,58 @@
+.playlistcard-custom-body {
+    background-color: rgba(239, 242, 246, 1);
+}
+
+.playlistcard-custom-body h5 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    max-height: 4.4rem;
+    overflow: hidden;
+    display: block;
+    -webkit-line-clamp: 2;
+    display: box;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    white-space: normal;
+
+}
+
+.playlistcard-custom-body p {
+    max-height: 4rem;
+    overflow: hidden;
+    display: block;
+    -webkit-line-clamp: 2;
+    display: box;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.upload-details p {
+    font-size: 0.9rem;
+}
+
+.upload-Text {
+    font-weight: 500;
+}
+
+.playlistcard-video-size {
+    font-size: 1.2rem;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    color: white;
+    padding: 4px;
+    width: 50%;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 23.75vh;
+}
+.playlistcard-video-size svg{
+    font-size: 1.8rem;
+    color: white;
+    margin-left: 10px;
+}

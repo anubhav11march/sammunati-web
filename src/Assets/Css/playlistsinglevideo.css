@@ -1,0 +1,18 @@
+.playlistvideo-detail-head h3{
+    font-size: 1.5rem;
+    font-weight: 600;
+}   
+.playlistvideo-description figure img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.playlistvideo-description figure figcaption{
+    font-size: 1rem;
+    font-weight: 600;
+}
+.playlist-sideplaylist h5{
+    font-size: 2rem;
+    font-weight: 600;
+}

@@ -1,0 +1,26 @@
+.playlist-container{
+    width: 100%;
+}
+.playlist-wrapper{
+    height:87vh;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.playlist-related-card  img{
+    width: 35%;
+    border-radius: 10px 0 0 10px;
+}
+.playlist-related-card{
+    border-radius: 10px;
+    background: rgba(241, 244, 247, 1);
+    margin: 20px 0;
+}
+.playlist-related-card-content h6{
+    font-size:1rem;
+    font-weight: 600;
+}
+.playlist-related-card-content p{
+    font-size: 0.9rem;
+}

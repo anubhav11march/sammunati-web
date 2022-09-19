@@ -2,14 +2,14 @@ import React from 'react'
 import '../../Assets/Css/card.css'
 import cardImage from '../../Assets/Images/cardImage.jpg'
 import { useNavigate } from 'react-router-dom'
-
-function Card() {
+import { useLocation } from 'react-router-dom'
+function Card(prop) {
   
   const navigate = useNavigate();
-  
+  const location = useLocation();
   return (
     <>
-      <div onClick={()=>navigate('/videos/123')} className="card position-relative me-4 "  style={{width: "16rem",cursor:"pointer"}}>
+      <div onClick={()=> {location.pathname.includes('/playlist')?(navigate('/playlist/123/video/156')):(navigate('/videos/123')) } } className="card position-relative me-4 mb-4"  style={{width: `${prop.static ? (prop.static):("22%")}`,cursor:"pointer"}}>
         <img className="card-img-top" src={cardImage} alt="Card image cap"/>
           <span className='card-video-length'>
               2:00

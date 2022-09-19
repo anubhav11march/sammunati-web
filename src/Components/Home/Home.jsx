@@ -13,7 +13,7 @@ function Home() {
 
           <div className='mb-5'>
             <HeadingStrip head={"Featured Videos"} subhead={"featured"}/>
-            <div className='d-flex'>
+            <div className='d-flex '>
                 <Card  />
                 <Card  />
                 <Card  />
@@ -39,7 +39,7 @@ function Home() {
 
         <div className='mb-5'>
             <HeadingStrip head={"All Videos"} />
-            <div className='d-flex'>
+            <div className='d-flex flex-wrap'>
                 <Card  />
                 <Card  />
                 <Card  />

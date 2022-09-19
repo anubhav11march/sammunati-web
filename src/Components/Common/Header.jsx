@@ -14,7 +14,7 @@ function Header({langChange}) {
                 <nav className="header-contet  py-2">
                     <div className="container-fluid d-flex">
                         <div className='col-8 d-flex logo-container'>
-                            <img src={logo} alt="logo" onClick={()=>navigate('/home')} />
+                            <img src={logo} alt="logo" onClick={()=>navigate('/')} />
                             <form className="d-flex w-50 ms-4" role="search">
                                 <input className="form-control me-2 " type="search" placeholder="Search all videos" aria-label="Search" />
                             </form>
@@ -36,7 +36,7 @@ function Header({langChange}) {
                             
                             </div>
 
-                             <button className="btn  btn-outline-secondary mx-3">Sign In</button>       
+                             <button onClick={()=>navigate('/login')} className="btn  btn-outline-secondary mx-3">Sign In</button>       
 
                         </div>
                     </div>

@@ -1,0 +1,42 @@
+.category-wrapper{
+    width: 100%;
+}
+.category-card-wrapper{
+    height:87vh;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.categoryList{
+    width: 25vw;
+    background-color: rgba(241, 244, 247, 1);
+    border-radius: 15px;
+}
+.categoryList h5{
+    font-size: 1rem;
+    color: rgba(204, 204, 204, 1);
+}
+.categoryList hr{
+    color: rgba(204, 204, 204, 1);
+}
+.categoryList ul{
+    list-style: none;
+    height: 75vh;
+    overflow-x: hidden;
+}
+.categoryList ul li{
+    overflow-y: auto;
+    padding: 10px 30px ;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+.categoryList ul li:hover{
+    background-color: rgba(221, 232, 238, 1);
+    border-radius: 25px;
+}
+.active-category{
+    background-color: rgba(221, 232, 238, 1);
+    font-weight: 700 !important;
+    border-radius: 25px;
+}
