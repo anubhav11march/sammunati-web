@@ -33,12 +33,12 @@ function Categories() {
                 <main className='category-card-wrapper px-4'>
                             <HeadingStrip head={"Category"} sub={false}/>   
                             <div className='d-flex flex-wrap'>
-                                    <Card static="20vw"/>
-                                    <Card static="20vw"/>
-                                    <Card static="20vw"/>
-                                    <Card static="20vw"/>
-                                    <Card static="20vw"/>
-                                    <Card static="20vw"/>
+                                    <Card static="19.5vw"/>
+                                    <Card static="19.5vw"/>
+                                    <Card static="19.5vw"/>
+                                    <Card static="19.5vw"/>
+                                    <Card static="19.5vw"/>
+                                    <Card static="19.5vw"/>
                             </div>         
                 </main>
         </section>

@@ -17,6 +17,8 @@ import Categories from './Components/Categories/Categories'
 import Faq from './Components/Faq/Faq'
 import Contactus from './Components/ContactUs/Contactus'
 import Query from './Components/Query/Query'
+import Blogs from './Components/Blogs/Blogs'
+import Singleblog from './Components/Blogs/Singleblog'
 
 function App() {
   const location=useLocation()
@@ -45,6 +47,7 @@ function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/playlist/:id1/video/:id2" element={<PlaylistSingleVideo />} />
+          <Route exact path="/blogs/:id" element={<Singleblog />} />
                       
           <Route element={<SidebarLayout />}>
             <Route exact path="/" element={<Home />} />
@@ -54,6 +57,7 @@ function App() {
             <Route exact path="/faq" element={<Faq />} />
             <Route exact path="/contactus" element={<Contactus />} />
             <Route exact path="/query" element={<Query />} />
+            <Route exact path="/blogs" element={<Blogs />} />
           </Route>
 
         </Routes>

@@ -1,0 +1,13 @@
+.blog-wrapper{
+    height:87vh;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.singleBlog-img-container{
+    height: 60vh;
+}
+.singleBlog-img-container img{
+    width: 100%;
+    height: 100%;
+}
