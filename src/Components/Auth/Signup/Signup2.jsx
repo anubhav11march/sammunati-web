@@ -23,7 +23,7 @@ function Signup2(props) {
 
                     <div className="form-outline mb-4">
                     <label className="form-label" for="form2Example1">Designation</label>
-                    <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+                    <select class="form-select form-select-md mb-3" name="designation" onChange={props.fieldChange} aria-label=".form-select-lg example">
                             <option >None</option>
                             <option value="1">Farmer</option>
                             <option value="2">Two</option>
@@ -33,13 +33,13 @@ function Signup2(props) {
 
 
                     <div className="form-outline mb-4">
-                        <label className="form-label" for="form2Example1">Age</label>
+                        <label className="form-label" name="age" onChange={props.fieldChange} for="form2Example1">Age</label>
                         <input type="number" id="form2Example1" className="form-control" />
                     </div>                    
                     
                     <div className="form-outline mb-4">
                         <label className="form-label" for="form2Example1">Address </label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" name="address" onChange={props.fieldChange} id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
 
 

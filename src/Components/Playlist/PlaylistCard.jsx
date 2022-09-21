@@ -8,7 +8,7 @@ function PlaylistCard() {
     const navigate = useNavigate();
     return (
         <>
-            <div onClick={() => navigate('/playlist/123')} className="card position-relative me-4 mb-4 " style={{ width: "22%", cursor: "pointer" }}>
+            <div onClick={() => navigate('/playlist/123')} className="card position-relative me-4 mb-4 " style={{ maxWidth: 250, cursor: "pointer" }}>
                 <img className="card-img-top" src={cardImage} alt="Card image cap" />
                 <span className='playlistcard-video-size'>
                      <p>23</p>

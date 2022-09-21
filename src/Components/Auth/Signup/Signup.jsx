@@ -6,10 +6,49 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import Signup2 from './Signup2'
 import Signup3 from './Signup3'
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+
+
 
 function Signup() {
     const navigate = useNavigate();
     const [page, setpage] = useState(1)
+
+    const [SignupData, setSignupData] = useState({
+        name:"",
+        email:"",
+        phone:"",
+        organisation:"",
+        designation:"",
+        age:"",
+        address:"",
+        username:"",
+        password:"",
+        cpassword:""
+
+    })
+
+    const handleInput = (e)=>{
+        const {name,value}=e.target;
+        setSignupData({...SignupData,[name]:value});
+    }
+
+    const handleSubmit = ()=>{
+        if(SignupData.password !=SignupData.cpassword ){
+            <Snackbar  autoHideDuration={2000} >
+              This is a success message!
+            </Snackbar>
+            return ;
+        }
+        try {
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <>
         <section className="d-flex justify-content-center align-items-center w-100 " style={{ height: "100vh" }}>
@@ -29,21 +68,21 @@ function Signup() {
 
                     <div className="form-outline mb-4">
                         <label className="form-label" for="form2Example1">Name  <span style={{color:"Red"}}> &nbsp;*</span></label>
-                        <input type="text" id="form2Example1" className="form-control" />
+                        <input type="text" name="name" onChange={handleInput} id="form2Example1" className="form-control" />
                     </div>                    
                     
                     <div className="form-outline mb-4">
                         <label className="form-label" for="form2Example1">Email </label>
-                        <input type="email" id="form2Example1" className="form-control" />
+                        <input type="email" id="form2Example1" name="email" onChange={handleInput} className="form-control" />
                     </div>                    
                     
                     <div className="form-outline mb-4">
                         <label className="form-label" for="form2Example1">Phone <span style={{color:"Red"}}> &nbsp;*</span></label>
-                        <input type="tel" id="form2Example1" className="form-control" />
+                        <input type="tel" id="form2Example1" onChange={handleInput} name="" className="form-control" />
                     </div>
 
                     <div className="form-outline mb-4">
-                    <label className="form-label" for="form2Example1">Organisation</label>
+                    <label className="form-label" name="organisation" onChange={handleInput} for="form2Example1">Organisation</label>
                     <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
                             <option >Organisation</option>
                             <option value="1">One</option>
@@ -66,9 +105,9 @@ function Signup() {
              
             ):(
                 page ==2 ?(
-                    <Signup2 setpage={setpage}/>
+                    <Signup2 setpage={setpage} fieldChange = {handleInput} />
                 ):(
-                    <Signup3 setpage={setpage}/>
+                    <Signup3 setpage={setpage} fieldChange = {handleInput}/>
                 )
             )
         }  

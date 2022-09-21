@@ -23,17 +23,17 @@ function Signup3(props) {
                     <h4 className='text-center py-2'>Create Your Account</h4>
 
                     <div className="form-outline mb-4">
-                        <label className="form-label" for="form2Example1">Create Username  <span style={{color:"Red"}}> &nbsp;*</span></label>
+                        <label className="form-label" name="username" onChange={props.fieldChange } for="form2Example1">Create Username  <span style={{color:"Red"}}> &nbsp;*</span></label>
                         <input type="text" id="form2Example1" className="form-control" />
                     </div>                    
                     
                     <div className="form-outline mb-4">
-                        <label className="form-label" for="form2Example1">Set Password </label>
+                        <label className="form-label" name="password" onChange={props.fieldChange } for="form2Example1">Set Password </label>
                         <input type="password" id="form2Example1" className="form-control" />
                     </div>                    
                     
                     <div className="form-outline mb-4">
-                        <label className="form-label" for="form2Example1">Confirm Password <span style={{color:"Red"}}> &nbsp;*</span></label>
+                        <label className="form-label"  name="cpassword" onChange={props.fieldChange } for="form2Example1">Confirm Password <span style={{color:"Red"}}> &nbsp;*</span></label>
                         <input type="password" id="form2Example1" className="form-control" />
                     </div>
 
