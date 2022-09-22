@@ -19,6 +19,7 @@ import Contactus from './Components/ContactUs/Contactus'
 import Query from './Components/Query/Query'
 import Blogs from './Components/Blogs/Blogs'
 import Singleblog from './Components/Blogs/Singleblog'
+import EditProfile from './Components/Profile/EditProfile'
 
 function App() {
   const location=useLocation()
@@ -58,6 +59,7 @@ function App() {
             <Route exact path="/contactus" element={<Contactus />} />
             <Route exact path="/query" element={<Query />} />
             <Route exact path="/blogs" element={<Blogs />} />
+            <Route exact path="/editprofile" element={<EditProfile />} />
           </Route>
 
         </Routes>

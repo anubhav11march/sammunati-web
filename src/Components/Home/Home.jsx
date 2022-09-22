@@ -6,6 +6,7 @@ import Card from '../Common/Card'
 function Home() {
   return (
     <>
+    
       <section className='home-container ps-3' >
         <main className='home-wrapper scroller'>
         

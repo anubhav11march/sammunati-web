@@ -1,11 +1,30 @@
-import React from 'react'
+import React,{useState} from 'react'
 import '../../Assets/Css/login.css'
 import logo from '../../Assets/Images/logo.png'
 import Googlelogo from '../../Assets/Images/googleicon.png'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { LoginUser } from '../Api/Api'
 function Login() {
     const navigate = useNavigate();
+    const [LoginData, setLoginData] = useState({
+        name:"",
+        password:""
+    })
+console.log(LoginData)
+    const Login = async()=>{
+        try {
+            const data = await LoginUser(LoginData);
+            console.log(data) ;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const handleinput =(e)=>{
+        const {name,value} = e.target;
+        setLoginData({...LoginData,[name]:value});
+    }
     return (
         <>
         <section className="d-flex justify-content-center align-items-center w-100 " style={{height:"100vh"}}> 
@@ -24,12 +43,12 @@ function Login() {
 
                 <div className="form-outline mb-4">
                     <label className="form-label" for="form2Example1">Email </label>
-                    <input type="email" id="form2Example1" className="form-control" />
+                    <input type="email" id="form2Example1" onChange={handleinput} name='email' className="form-control" />
                 </div>
 
                 <div className="form-outline mb-4">
                     <label className="form-label" for="form2Example2">Password</label>
-                    <input type="password" id="form2Example2" className="form-control" />
+                    <input type="password" id="form2Example2" name='password' onChange={handleinput} className="form-control" />
                 </div>
 
                 <div className="row mb-4">
