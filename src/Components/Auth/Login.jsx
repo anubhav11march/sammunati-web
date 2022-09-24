@@ -5,6 +5,8 @@ import Googlelogo from '../../Assets/Images/googleicon.png'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { LoginUser } from '../Api/Api'
+import toast, { Toaster } from 'react-hot-toast';
+
 function Login() {
     const navigate = useNavigate();
     const [LoginData, setLoginData] = useState({
@@ -25,8 +27,34 @@ console.log(LoginData)
         const {name,value} = e.target;
         setLoginData({...LoginData,[name]:value});
     }
+    const handleSubmit = async()=>{
+        if(!LoginData?.password  || !LoginData?.email){
+            toast.error('Fill Email and Password !')
+            return;
+        }
+        try {
+            const data=await LoginUser(LoginData)
+            if(data?.data?.code ===400){
+                toast.error('No user Exist')
+            }else if(data?.data?.code ===401){
+                toast.error('Password Incorrect')
+            }
+            if(data?.data?.code ===200){
+                localStorage.setItem('token',JSON.stringify(data?.data?.data));
+                localStorage.setItem('accessToken',JSON.stringify(data?.data?.accessToken));
+                navigate('/')
+                console.log(data)
+            }
+            
+        } catch (error) {
+            console.log(error)
+    }}
+
     return (
         <>
+          <Toaster
+                  position="top-right"
+               />
         <section className="d-flex justify-content-center align-items-center w-100 " style={{height:"100vh"}}> 
 
 
@@ -64,7 +92,7 @@ console.log(LoginData)
                     </div>
                 </div>
 
-                <button type="button" onClick={()=>navigate('/')} className="btn text-white  w-100 py-2 mb-4" style={{backgroundColor:"rgba(4, 195, 92, 1)"}}>Login Now</button>
+                <button type="button" onClick={handleSubmit} className="btn text-white  w-100 py-2 mb-4" style={{backgroundColor:"rgba(4, 195, 92, 1)"}}>Login Now</button>
                 <button type="button" className="btn text-white d-flex py-2 align-items-center justify-content-center google-button  w-100 mb-4" style={{backgroundColor:"rgba(45, 55, 72, 1)"}}>
                 <img src={Googlelogo} alt="" />
                 Or sign-in with google</button>

@@ -20,6 +20,7 @@ import Query from './Components/Query/Query'
 import Blogs from './Components/Blogs/Blogs'
 import Singleblog from './Components/Blogs/Singleblog'
 import EditProfile from './Components/Profile/EditProfile'
+import ChangePassword from './Components/Auth/ChangePassword'
 
 function App() {
   const location=useLocation()
@@ -38,7 +39,7 @@ function App() {
   return (
     <>
       {
-        location.pathname === '/login' || location.pathname === '/signup'  ? (null):(<Header langChange = {handleLanguage}/>)
+        location.pathname === '/login' || location.pathname === '/signup' || location.pathname === '/changepassword'  ? (null):(<Header langChange = {handleLanguage}/>)
       }
       
       <div className='container-fluid px-0 d-flex'>
@@ -47,7 +48,9 @@ function App() {
           <Route exact path="/videos/:id" element={<SingleVideo />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/changepassword" element={<ChangePassword />} />
           <Route exact path="/playlist/:id1/video/:id2" element={<PlaylistSingleVideo />} />
+          <Route exact path="/blogs/:id" element={<Singleblog />} />
           <Route exact path="/blogs/:id" element={<Singleblog />} />
                       
           <Route element={<SidebarLayout />}>

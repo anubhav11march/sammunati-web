@@ -1,0 +1,7 @@
+#form2Example1{
+    background-color: rgba(241, 246, 248, 1);
+}
+.editProfile-wrapper{
+    height: 87vh;
+    overflow-y: auto;
+}

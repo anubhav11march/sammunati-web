@@ -1,6 +1,6 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import '../../Assets/Css/header.css'
-import { useNavigate } from 'react-router-dom'
+import { json, useNavigate } from 'react-router-dom'
 import logo from '../../Assets/Images/logo.png'
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import person from '../../Assets/Images/men.png'
@@ -8,8 +8,16 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import Popper from "@mui/material/Popper";
 import Fade from "@mui/material/Fade";
 import NotificationCard from './NotificationCard';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { Button } from '@mui/material';
+import {IconButton} from '@mui/material';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+
+
 function Header({langChange}) {
-    const [isLoggedIn, setisLoggedIn] = useState(true);
+    const [isLoggedIn, setisLoggedIn] = useState(false);
+    const [loginData, setloginData] = useState();
     const navigate = useNavigate()
     const handleChange=(e)=>{
         console.log(e)
@@ -25,6 +33,33 @@ const handleClick = (newPlacement) => (event) => {
   setOpen((prev) => placement !== newPlacement || !prev);
   setPlacement(newPlacement);
 };
+
+useEffect(() => {
+        let data = localStorage.getItem('token');
+        if(data){
+            setisLoggedIn(true)
+            setloginData(JSON.parse(data))
+        }
+    }, []
+)
+
+//popper
+const [anchorEl2, setanchorEl2] = React.useState(null);
+const open2 = Boolean(anchorEl2);
+const handleClick2 = (event) => {
+  setanchorEl2(event.currentTarget);
+};
+const handleClose = () => {
+  setanchorEl2(null);
+};
+
+
+const handleLogout = ()=>{
+    handleClose()
+    localStorage.removeItem('token');
+    setisLoggedIn(false)
+    window.location.reload()
+}
 
     return (
         <>
@@ -58,8 +93,30 @@ const handleClick = (newPlacement) => (event) => {
                                 isLoggedIn ? (
                                         <div className='d-flex align-items-center afterlogin'>
                                         <NotificationsIcon  onClick={handleClick("bottom-end")}s/>
-                                        <h5>Hi Saurabh</h5>
-                                        <img onClick={()=>navigate('/editprofile')} src={person} alt="noimg" />
+                                        <h5>{loginData?.name}</h5>
+                                        <IconButton
+                                         id="basic-button"
+                                            aria-controls={open2 ? 'basic-menu' : undefined}
+                                            aria-haspopup="true"
+                                            aria-expanded={open2 ? 'true' : undefined}
+                                            onClick={handleClick2}
+                                        >
+                                            <img  src={person} alt="noimg" />
+                                        </IconButton>
+                                        <Menu
+                                            id="basic-menu"
+                                            anchorEl={anchorEl2}
+                                            open={open2}
+                                            onClose={handleClose}
+                                            MenuListProps={{
+                                            'aria-labelledby': 'basic-button',
+                                            }}
+                                        >
+                                            <MenuItem onClick={()=>navigate('/editprofile')}>Profile</MenuItem>
+                                            <MenuItem onClick={()=>navigate('/changepassword')}>Change Password</MenuItem>
+                                            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                                        </Menu>
+
                                         </div>
                                 ):(
                                      <button onClick={()=>navigate('/login')} className="btn  btn-outline-secondary mx-3">Sign In</button>       
