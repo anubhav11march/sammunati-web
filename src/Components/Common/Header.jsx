@@ -57,6 +57,7 @@ const handleClose = () => {
 const handleLogout = ()=>{
     handleClose()
     localStorage.removeItem('token');
+    localStorage.removeItem('accessToken');
     setisLoggedIn(false)
     window.location.reload()
 }

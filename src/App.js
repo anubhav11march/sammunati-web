@@ -35,7 +35,6 @@ function App() {
       <Outlet />
     </>
   );
-  console.log(window.location)
   return (
     <>
       {

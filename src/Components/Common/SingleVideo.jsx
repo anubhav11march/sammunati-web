@@ -1,14 +1,32 @@
 import React from 'react'
-import ReactPlayer from 'react-player'
+import { ReactVideoPlayer } from 'video-player-for-react'
+import 'video-player-for-react/dist/index.css'
 import '../../Assets/Css/singlevideo.css'
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
 import channelLogo from '../../Assets/Images/cardImage.jpg'
+import video from '../../Assets/Images/v1.mp4'
 function SingleVideo() {
   return (
     <>
-      <section className='flex-column container-fluid px-0  '>
-        <ReactPlayer width="100%" height="60vh" controls url='https://youtu.be/9CvwbW9UhJc' />
+      <section className='flex-column container-fluid px-0 w-100 '>
+        {/* <ReactPlayer width="100%" height="60vh" controls url={video} /> */}
+        <ReactVideoPlayer
+            width="100vw"
+            height="500px"
+            url={video}
+            type='video/mp4'
+            Fullscreen mode
+      // poster='http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg'
+      // captions={[
+      //   {
+      //     kind: 'captions',
+      //     label: 'English',
+      //     srcLang: 'en',
+      //     src: 'caption_url'
+      //   }
+      // ]}
+    />
         <main className='video-detail-wrapper container py-5 '>
           <div className='col-10'>
 

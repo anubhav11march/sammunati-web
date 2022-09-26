@@ -44,6 +44,7 @@ function EditProfile() {
             console.log(error)
         }
     }
+    
     return (
         <>
             <section className='editProfile-wrapper scroller  w-100 ps-3 py-3' >
@@ -57,7 +58,7 @@ function EditProfile() {
 
                     <div className="form-outline mb-4">
                         <label className="form-label" for="form2Example1">Name</label>
-                        <input type="text" id="form2Example1" onChange={handleInput} name="name" defaultValue={profileData?.name}  placeholder='Your Name'  name="email" className="form-control" />
+                        <input type="text" id="form2Example1" onChange={handleInput} name="name" defaultValue={profileData?.name}  placeholder='Your Name'  className="form-control" />
                     </div>
 
                     <div className="form-outline mb-4">
@@ -72,7 +73,7 @@ function EditProfile() {
 
                     <div className="form-outline mb-4">
                         <label className="form-label" for="form2Example1">Age</label>
-                        <input type="number" id="form2Example1" onChange={handleInput} defaultValue={profileData?.age}  name="Age" className="form-control" />
+                        <input type="number" id="form2Example1" onChange={handleInput} defaultValue={profileData?.age}  name="age" className="form-control" />
                     </div>
 
                     <div className="form-outline mb-4">
