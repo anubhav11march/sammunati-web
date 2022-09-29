@@ -3,24 +3,24 @@ import '../../Assets/Css/card.css'
 import cardImage from '../../Assets/Images/cardImage.jpg'
 import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
-function Card(prop) {
+function Card({title , duration  , thumbnail, date,description,url,uploadby}) {
   
   const navigate = useNavigate();
   const location = useLocation();
   return (
     <>
       <div onClick={()=> {location.pathname.includes('/playlist')?(navigate('/playlist/123/video/156')):(navigate('/videos/123')) } } className="card position-relative me-4 mb-4"  style={{maxWidth:250 ,cursor:"pointer"}}>
-        <img className="card-img-top" src={cardImage} alt="Card image cap"/>
+        <img className="card-img-top" src={cardImage ? (cardImage) :(thumbnail)} alt="Card image cap"/>
           <span className='card-video-length'>
-              2:00
+              {duration ? (duration) :( 0)}:00
           </span>
           <div className="card-body card-custom-body">
-            <h5>How to process with tree grafting without damaging the roots</h5>
+            <h5>{title ? (title):("How to process with tree grafting without damaging the roots")}</h5>
             
-            <p className="card-text my-2">How to process with tree grafting lorem without damaging</p> 
+            <p className="card-text my-2">{description ? (description):("How to process with tree grafting lorem without damaging")}</p> 
             
             <div className="d-flex my-2 justify-content-between upload-details">
-                <p className='upload-Text'> Uploader Name</p>
+                <p className='upload-Text'>{uploadby ?(uploadby):("Admin")}</p>
                 <p>20/08/2022 </p>
               </div>
 

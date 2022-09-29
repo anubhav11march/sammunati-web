@@ -1,10 +1,28 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import Header from '../Common/Header'
 import '../../Assets/Css/home.css'
 import HeadingStrip from '../Common/HeadingStrip'
 import Card from '../Common/Card'
+import { GetVideos } from '../Api/Api'
 function Home() {
+  const [featuredVideos, setfeaturedVideos] = useState([])
+
+  const getFeaturedVideos =async()=>{
+    try {
+    
+      const data =await GetVideos();
+      console.log(data)
+      setfeaturedVideos(data?.data?.data)
+    } catch (error) {
+      console.log(error)
+        }
+  }
+
+  useEffect(() => {
+    getFeaturedVideos()
+  }, []);
   return (
+
     <>
     
       <section className='home-container ps-3' >
@@ -15,15 +33,25 @@ function Home() {
           <div className='mb-5'>
             <HeadingStrip head={"Featured Videos"} subhead={"featured"}/>
             <div className='d-flex flex-wrap '>
-                <Card  />
-                <Card  />
-                <Card  />
-                <Card  />
-                <Card  />
-                <Card  />
-                <Card  />
-                <Card  />
-                <Card  />
+                {
+                  featuredVideos?.map((item,index)=>{
+                    return <Card 
+                      index={index}
+                      key={index}
+                      duration = {item.duration}
+                      length={item.length}
+                      thumbnail={item.thumbnail}
+                      url = {item.url}
+                      date={item.date}
+                      uploadby={item.uploadedBy}
+                      title={item.title}
+                      description={item.description}
+                                         />
+                  })
+                }
+
+                
+                
             </div>
           </div>
           

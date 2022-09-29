@@ -15,3 +15,6 @@ export const LoginUser = (data) => API.post("/api/user/signin", data);
 
 export const UpdateUser = (data) => SecuredAPI.put("/api/user/", data,{headers:headers});
 export const AddQuery = (data) => API.post("/api/user/query", data );
+
+
+export const GetVideos = () => API.get("/api/admin/video?videoIndex=0" );
