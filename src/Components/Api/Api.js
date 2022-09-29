@@ -17,4 +17,4 @@ export const UpdateUser = (data) => SecuredAPI.put("/api/user/", data,{headers:h
 export const AddQuery = (data) => API.post("/api/user/query", data );
 
 
-export const GetVideos = () => API.get("/api/admin/video?videoIndex=0" );
+export const GetVideos = () => SecuredAPI.get("/api/admin/video?videoIndex=0" );
