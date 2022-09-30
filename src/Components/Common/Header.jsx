@@ -13,6 +13,7 @@ import { Button } from '@mui/material';
 import {IconButton} from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { GetUser } from '../Api/Api';
 
 
 function Header({langChange}) {
@@ -38,6 +39,15 @@ useEffect(() => {
         let data = localStorage.getItem('token');
         if(data){
             setisLoggedIn(true)
+            const calldata = async()=>{
+                try {
+                    const data = await GetUser();
+                    setloginData(data?.data?.data)
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            calldata()
             setloginData(JSON.parse(data))
         }
     }, []

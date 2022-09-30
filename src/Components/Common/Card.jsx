@@ -3,13 +3,13 @@ import '../../Assets/Css/card.css'
 import cardImage from '../../Assets/Images/cardImage.jpg'
 import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
-function Card({title , duration  , thumbnail, date,description,url,uploadby}) {
-  
+function Card({title , duration  , thumbnail,id, date,description,url,uploadby}) {
   const navigate = useNavigate();
   const location = useLocation();
+
   return (
     <>
-      <div onClick={()=> {location.pathname.includes('/playlist')?(navigate('/playlist/123/video/156')):(navigate('/videos/123')) } } className="card position-relative me-4 mb-4"  style={{maxWidth:250 ,cursor:"pointer"}}>
+      <div onClick={()=> {location.pathname.includes('/playlist')?(navigate('/playlist/123/video/156')):(navigate(`/videos/${id}`)) } } className="card position-relative me-4 mb-4"  style={{maxWidth:250 ,cursor:"pointer"}}>
         <img className="card-img-top" src={cardImage ? (cardImage) :(thumbnail)} alt="Card image cap"/>
           <span className='card-video-length'>
               {duration ? (duration) :( 0)}:00
@@ -21,7 +21,7 @@ function Card({title , duration  , thumbnail, date,description,url,uploadby}) {
             
             <div className="d-flex my-2 justify-content-between upload-details">
                 <p className='upload-Text'>{uploadby ?(uploadby):("Admin")}</p>
-                <p>20/08/2022 </p>
+                <p>{date} </p>
               </div>
 
           </div>

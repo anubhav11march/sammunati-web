@@ -38,6 +38,7 @@ function Home() {
                     return <Card 
                       index={index}
                       key={index}
+                      id={item._id}
                       duration = {item.duration}
                       length={item.length}
                       thumbnail={item.thumbnail}

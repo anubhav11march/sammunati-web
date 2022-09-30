@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import { Navigate, useNavigate } from 'react-router-dom';
 import '../../Assets/Css/profile.css'
-import { UpdateUser } from '../Api/Api';
+import { GetUser, UpdateUser } from '../Api/Api';
 
 function EditProfile() {
     const navigate = useNavigate();
@@ -19,16 +19,18 @@ function EditProfile() {
     })
 
     useEffect(() => {
-        let data = JSON.parse(localStorage?.getItem('token'));
-        if(data){
-            setprofileData(data)
-            setupdate(data)
-        }else{
-            navigate('/')
+        const call = async()=>{
+                try {
+                    const data = await GetUser();
+                    setprofileData(data?.data?.data)
+                    setupdate(data?.data?.data)
+                } catch (error) {
+                    console.log(error)
+                }
         }
+        call()
 
     }, [])
-    console.log(update)
     
     const handleInput = (e)=>{
         const {name,value}=e.target;
@@ -53,7 +55,7 @@ function EditProfile() {
                 <div className='col-5 py-4'>
                     <div className="form-outline mb-4">
                         <label className="form-label" for="form2Example1">Profile Picture  <span style={{ color: "Red" }}> &nbsp;*</span></label>
-                        <input type="file"  name="name"   id="form2Example1" className="form-control" />
+                        <input type="file"   name="name"   id="form2Example1" className="form-control" />
                     </div>
 
                     <div className="form-outline mb-4">
