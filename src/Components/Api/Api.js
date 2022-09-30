@@ -10,6 +10,7 @@ const SecuredAPI = axios.create({
   baseURL: "https://cors-everywhere.herokuapp.com/https://samunnatibackend.herokuapp.com",
 });
 // signup
+//content
 export const PostUser = (data) => API.post("/api/user/signup", data);
 export const LoginUser = (data) => API.post("/api/user/signin", data);
 
