@@ -8,7 +8,9 @@ import channelLogo from '../../Assets/Images/cardImage.jpg'
 import video from '../../Assets/Images/v1.mp4'
 import { useParams } from 'react-router-dom';
 import { GetVideos, GetVideosById } from '../Api/Api';
-
+import VideoJS from './VideoPlayer';
+import videojs from 'video.js';
+import 'video.js/dist/video-js.css';
 function SingleVideo() {
     const param = useParams();
    const [VideoData, setVideoData] = useState([])
@@ -26,27 +28,52 @@ function SingleVideo() {
     useEffect(() => {
       getData();
     }, [])
+
+
+    // video player
+    const playerRef = React.useRef(null);
+
+    const videoJsOptions = {
+      autoplay: true,
+      controls: true,
+      responsive: true,
+      height:"600",
+      sources: [{
+        src: 'https://samunnati.s3.ap-south-1.amazonaws.com/blender-sample.mp4',
+        type: 'video/mp4'
+      }]
+    };
+  
+    const handlePlayerReady = (player) => {
+      playerRef.current = player;
+  
+      // You can handle player events here, for example:
+      player.on('waiting', () => {
+        videojs.log('player is waiting');
+      });
+  
+      player.on('dispose', () => {
+        videojs.log('player will dispose');
+      });
+    };
+
+
+
     
   return (
     <>
       <section className='flex-column container-fluid px-0 w-100 '>
         {/* <ReactPlayer width="100%" height="60vh" controls url={video} /> */}
-        <ReactVideoPlayer
+        {/* <ReactVideoPlayer
             width="80vw"
             height="500px"
             url={VideoData?.url ? (VideoData?.url):(video)}
             type='video/mp4'
             Fullscreen mode
-      // poster='http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg'
-      // captions={[
-      //   {
-      //     kind: 'captions',
-      //     label: 'English',
-      //     srcLang: 'en',
-      //     src: 'caption_url'
-      //   }
-      // ]}
-    />
+      
+    /> */}
+    <VideoJS options={videoJsOptions}  onReady={handlePlayerReady} />
+
         <main className='video-detail-wrapper container py-5 '>
           <div className='col-10'>
 
