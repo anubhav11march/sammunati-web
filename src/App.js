@@ -21,6 +21,7 @@ import Blogs from './Components/Blogs/Blogs'
 import Singleblog from './Components/Blogs/Singleblog'
 import EditProfile from './Components/Profile/EditProfile'
 import ChangePassword from './Components/Auth/ChangePassword'
+import ProtectedRoutes from './Components/Auth/ProtectedRoutes'
 
 function App() {
   const location=useLocation()
@@ -35,6 +36,7 @@ function App() {
       <Outlet />
     </>
   );
+
   return (
     <>
       {
@@ -43,7 +45,7 @@ function App() {
       
       <div className='container-fluid px-0 d-flex'>
         <Routes>
-          
+
           <Route exact path="/videos/:id" element={<SingleVideo />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
@@ -51,17 +53,21 @@ function App() {
           <Route exact path="/playlist/:id1/video/:id2" element={<PlaylistSingleVideo />} />
           <Route exact path="/blogs/:id" element={<Singleblog />} />
           <Route exact path="/blogs/:id" element={<Singleblog />} />
-                      
+
+           
+
           <Route element={<SidebarLayout />}>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/playlist" element={<Playlist />} />
             <Route exact path="/playlist/:id" element={<SinglePlaylist />} />
             <Route exact path="/categories" element={<Categories />} />
-            <Route exact path="/faq" element={<Faq />} />
             <Route exact path="/contactus" element={<Contactus />} />
             <Route exact path="/query" element={<Query />} />
             <Route exact path="/blogs" element={<Blogs />} />
+            <Route exact path="/faq" element={<Faq />} />
+            <Route element={<ProtectedRoutes />}>
             <Route exact path="/editprofile" element={<EditProfile />} />
+          </Route> 
           </Route>
 
         </Routes>

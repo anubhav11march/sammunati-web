@@ -23,3 +23,6 @@ export const AddQuery = (data) => API.post("/api/user/query", data );
 
 export const GetVideos = () => API.get("/api/admin/video?videoIndex=0" );
 export const GetVideosById = (id) => API.get(`/api/admin/video/${id}` );
+
+
+export const getCategoriesList = () => API.get(`api/admin/categoryPlaylist` );

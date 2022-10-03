@@ -1,33 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../Assets/Css/category.css'
+import { getCategoriesList } from '../Api/Api';
 import Card from '../Common/Card'
 import HeadingStrip from '../Common/HeadingStrip'
 
 
 function Categories() {
-
-    const eventDelegation=(e)=>{
-        console.log(e.target.id)
-        window.location.hash= `#${e.target.id}`
+  const [categoriesList,setCategoriesList]=useState([]);
+  const [selectedCategory,setSelectedCategory]=useState("")
+    const handleCategory=(item)=>{
+      setSelectedCategory(item);
     }
+
+    const fetchCategoriesList=async()=>{
+      const res= await getCategoriesList();
+      setCategoriesList(res.data.data[0].category);
+    }
+  useEffect(()=>{
+    fetchCategoriesList();
+  },[])
+  
+
   return (
     <>
         <section className='category-wrapper d-flex'>
                 <main className="categoryList ">
                      <h5 className="p-3 pb-0"> Categories</h5>
                      <hr />
-                     <ul className='px-2   scroller' onClick={eventDelegation}>
-                        <li id="all">All</li>
-                        <li id="c1" className={"active-category"} >Category 1</li>
-                        <li id="c2">Category 1</li>
-                        <li id="c3">Category 1</li>
-                        <li id="c4">Category 1</li>
-                        <li id="c5">Category 1</li>
-                        <li id="c6">Category 1</li>
-                        <li id="c7">Category 1</li>
-                        <li id="c8">Category 1</li>
-                        <li id="c9">Category 1</li>
-                        <li id="c10">Category 1</li>
+                     <ul className='px-2   scroller'>
+                      <li className={` ${ selectedCategory==="" ? "active-category" :""}  `}  onClick={()=> handleCategory("")} >All</li>
+                      {
+                        categoriesList.map(item=>{
+                          return <li onClick={()=> handleCategory(item)} className={` ${ selectedCategory===item ? "active-category" :""}  `} >{item}</li>
+                        })
+                      }
                      </ul>   
                 </main>
                 <main className='category-card-wrapper px-4'>

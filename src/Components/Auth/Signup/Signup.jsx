@@ -41,7 +41,6 @@ function Signup() {
     }
 
     // form submission
-console.log(SignupData)
     const handleSubmit = async() => {
         const {password,cpassword,name,username,email}=SignupData
         if(!password || !cpassword || !name || !username || !email){
@@ -70,9 +69,9 @@ console.log(SignupData)
         try {
             const data = await PostUser(SignupData);
             console.log(data)
-            navigate('/login')
+            // navigate('/login')
         } catch (error) {
-            console.log(error)
+            toast.error(error);
         }
     }
 
