@@ -52,9 +52,6 @@ function App() {
           <Route exact path="/changepassword" element={<ChangePassword />} />
           <Route exact path="/playlist/:id1/video/:id2" element={<PlaylistSingleVideo />} />
           <Route exact path="/blogs/:id" element={<Singleblog />} />
-          <Route exact path="/blogs/:id" element={<Singleblog />} />
-
-           
 
           <Route element={<SidebarLayout />}>
             <Route exact path="/" element={<Home />} />

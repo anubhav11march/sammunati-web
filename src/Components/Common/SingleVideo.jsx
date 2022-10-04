@@ -11,6 +11,7 @@ import { GetVideos, GetVideosById } from '../Api/Api';
 import VideoJS from './VideoPlayer';
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
+
 function SingleVideo() {
     const param = useParams();
    const [VideoData, setVideoData] = useState([])
@@ -18,7 +19,6 @@ function SingleVideo() {
     const getData =async()=>{
       try {
         const data = await GetVideosById(param?.id)
-        console.log(data?.data?.data)
         setVideoData(data?.data?.data)
       } catch (error) {
         console.log(error)

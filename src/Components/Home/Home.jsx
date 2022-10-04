@@ -62,10 +62,10 @@ function Home() {
         <div className='mb-5'>
             <HeadingStrip head={"Most Viewed "} subhead={"most viewed"}/>
             <div className='d-flex'>
+                {/* <Card  />
                 <Card  />
                 <Card  />
-                <Card  />
-                <Card  />
+                <Card  /> */}
             </div>
           </div>
 
@@ -75,13 +75,13 @@ function Home() {
         <div className='mb-5'>
             <HeadingStrip head={"All Videos"} />
             <div className='d-flex flex-wrap'>
+                {/* <Card  />
                 <Card  />
                 <Card  />
                 <Card  />
                 <Card  />
                 <Card  />
-                <Card  />
-                <Card  />
+                <Card  /> */}
             </div>
           </div>
 
