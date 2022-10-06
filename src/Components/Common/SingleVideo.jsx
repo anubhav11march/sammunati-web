@@ -15,12 +15,21 @@ import 'video.js/dist/video-js.css';
 function SingleVideo() {
     const param = useParams();
    const [VideoData, setVideoData] = useState([])
-
+    const [videoJsOptions,setVideoJsOptions]=useState();
     const getData =async()=>{
       try {
         const data = await GetVideosById(param?.id)
-        setVideoData(data?.data?.data)
-        console.log(data)
+        setVideoData(data?.data?.data);
+        setVideoJsOptions({
+          autoplay: true,
+          controls: true,
+          responsive: true,
+          height:"600",
+          sources: [{
+            src:data?.data?.data?.url,
+            type: 'video/mp4'
+          }]
+        })
       } catch (error) {
         console.log(error)
       }
@@ -30,20 +39,11 @@ function SingleVideo() {
       getData();
     }, [])
 
-
+    
+  
     // video player
     const playerRef = React.useRef(null);
 
-    const videoJsOptions = {
-      autoplay: true,
-      controls: true,
-      responsive: true,
-      height:"600",
-      sources: [{
-        src:VideoData?.url,
-        type: 'video/mp4'
-      }]
-    };
   
     const handlePlayerReady = (player) => {
       playerRef.current = player;
@@ -58,7 +58,7 @@ function SingleVideo() {
       });
     };
 
-
+console.log(VideoData)
 
     
   return (
