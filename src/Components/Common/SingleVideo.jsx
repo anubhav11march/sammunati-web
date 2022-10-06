@@ -20,6 +20,7 @@ function SingleVideo() {
       try {
         const data = await GetVideosById(param?.id)
         setVideoData(data?.data?.data)
+        console.log(data)
       } catch (error) {
         console.log(error)
       }
@@ -39,7 +40,7 @@ function SingleVideo() {
       responsive: true,
       height:"600",
       sources: [{
-        src: 'https://samunnati.s3.ap-south-1.amazonaws.com/blender-sample.mp4',
+        src:VideoData?.url,
         type: 'video/mp4'
       }]
     };

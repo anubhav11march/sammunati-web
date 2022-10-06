@@ -9,34 +9,31 @@ function Card(props) {
     <div
       
       className="card position-relative me-4 mb-4"
-      style={{ maxWidth: 250, cursor: "pointer" }}
+      style={{ maxWidth: 250,minWidth:250, cursor: "pointer" }}
       onClick={() => {
-        navigate(`/videos/${props.item._id}`);
+        navigate(`/videos/${props.id}`);
       }}
     >
-      <div
-        className="card position-relative me-4 mb-4"
-        style={{ maxWidth: 250, cursor: "pointer" }}
-      >
+      
         <img
           className="card-img-top"
-          src={props.item.thumbnail}
+          src={props?.thumbnail}
           alt="Card image cap"
         />
         <span className="card-video-length">
-          {formatSeconds(props.item.duration)}
+          {formatSeconds(props?.duration)}
         </span>
-        <div className="card-body card-custom-body">
-          <h5>{props.item.title}</h5>
 
-          <p className="card-text my-2">{props.item.description}</p>
+        <div className="card-body card-custom-body">
+          <h5>{props?.title}</h5>
+
+          <p className="card-text my-2">{props?.description}</p>
 
           <div className="d-flex my-2 justify-content-between upload-details">
-            <p className="upload-Text">{props.item.uploadedBy}</p>
-            <p>{props.item.date} </p>
+            <p className="upload-Text">{props?.uploadedBy}</p>
+            <p>{props?.date} </p>
           </div>
         </div>
-      </div>
     </div>
   );
 }

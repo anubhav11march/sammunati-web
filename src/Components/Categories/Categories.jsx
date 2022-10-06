@@ -84,8 +84,19 @@ function Categories() {
             </div>
           </div>
           <div className="d-flex flex-wrap">
-            {videoList.map((item) => {
-              return <Card key={item._id} static="19.5vw" item={item} />;
+            {videoList.map((item,index) => {
+              return <Card key={index} static="19.5vw" 
+               index={index}
+                      id={item._id}
+                      duration = {item.duration}
+                      length={item.length}
+                      thumbnail={item.thumbnail}
+                      url = {item.url}
+                      date={item.date}
+                      uploadby={item.uploadedBy}
+                      title={item.title}
+                      description={item.description}
+               />;
             })}
           </div>
         </main>

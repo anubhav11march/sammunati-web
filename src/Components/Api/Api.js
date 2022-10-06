@@ -13,6 +13,7 @@ const SecuredAPI = axios.create({
 });
 // signup
 //content
+
 export const PostUser = (data) => API.post("/api/user/signup", data);
 export const LoginUser = (data) => API.post("/api/user/signin", data);
 export const GetUser = () => SecuredAPI.get("/api/user");
@@ -20,7 +21,7 @@ export const GetUser = () => SecuredAPI.get("/api/user");
 export const UpdateUser = (data) => SecuredAPI.put("/api/user/", data);
 export const AddQuery = (data) => API.post("/api/user/query", data);
 
-export const GetVideos = () => API.get("/api/admin/video?videoIndex=0");
+export const GetVideos = () => API.get("/api/user/video/category?videoIndex=0");
 
 export const GetVideosById = (id) => API.get(`/api/user/video/${id}`);
 
