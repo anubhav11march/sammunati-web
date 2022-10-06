@@ -15,7 +15,7 @@ import 'video.js/dist/video-js.css';
 function SingleVideo() {
     const param = useParams();
    const [VideoData, setVideoData] = useState([])
-    const [videoJsOptions,setVideoJsOptions]=useState();
+    const [videoJsOptions,setVideoJsOptions]=useState({});
     const getData =async()=>{
       try {
         const data = await GetVideosById(param?.id)
@@ -58,7 +58,6 @@ function SingleVideo() {
       });
     };
 
-console.log(VideoData)
 
     
   return (

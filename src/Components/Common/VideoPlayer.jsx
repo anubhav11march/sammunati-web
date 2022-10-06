@@ -26,6 +26,8 @@ export const VideoJS = (props) => {
       const player = playerRef.current;
       player.autoplay(options.autoplay);
       player.src(options.sources);
+      player.controls(options.controls);
+      player.responsive(options.responsive);
     }
   }, [options, videoRef]);
 
