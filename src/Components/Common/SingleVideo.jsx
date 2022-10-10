@@ -72,7 +72,9 @@ function SingleVideo() {
             Fullscreen mode
       
     /> */}
+    <div className="video-container">
     <VideoJS options={videoJsOptions}  onReady={handlePlayerReady} />
+    </div>
 
         <main className='video-detail-wrapper container py-5 '>
           <div className='col-10'>

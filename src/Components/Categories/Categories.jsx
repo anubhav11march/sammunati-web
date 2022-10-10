@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../../Assets/Css/category.css";
 import "../../Assets/Css/headingstrip.css";
+import "../../Assets/Css/pagination.css";
 import { getCategoriesList, getVideosByCategory } from "../Api/Api";
 import Card from "../Common/Card";
+import { Pagination } from "antd";
 
 function Categories() {
   const [categoriesList, setCategoriesList] = useState([]);
@@ -24,7 +26,7 @@ function Categories() {
     }
   };
 
-  const fetchVideoByCategory = async () => {
+  const fetchVideoByCategory = async (page) => {
     try {
       const res = await getVideosByCategory(page, selectedCategory);
       setVideoList(res.data.data);
@@ -33,13 +35,17 @@ function Categories() {
       console.log(e);
     }
   };
+  const handlePageChange = (clickedPage) => {
+    fetchVideoByCategory(clickedPage - 1);
+    setPage(clickedPage - 1);
+  };
 
   useEffect(() => {
     fetchCategoriesList();
   }, []);
 
   useEffect(() => {
-    fetchVideoByCategory();
+    fetchVideoByCategory(0);
   }, [selectedCategory]);
 
   return (
@@ -77,26 +83,33 @@ function Categories() {
             <h4>
               Category: {selectedCategory === "" ? "All" : selectedCategory}
             </h4>
-            <div>
-              {Array.apply(null, Array(maxPage + 1)).map(function (x, i) {
-                return <span className="m-1">{i}</span>;
-              })}
+            <div className="d-flex justify-content-center align-items-center">
+              <Pagination
+                current={page + 1}
+                total={30}
+                defaultPageSize={10}
+                onChange={handlePageChange}
+              />
             </div>
           </div>
           <div className="d-flex flex-wrap">
-            {videoList.map((item,index) => {
-              return <Card key={index} static="19.5vw" 
-               index={index}
-                      id={item._id}
-                      duration = {item.duration}
-                      length={item.length}
-                      thumbnail={item.thumbnail}
-                      url = {item.url}
-                      date={item.date}
-                      uploadby={item.uploadedBy}
-                      title={item.title}
-                      description={item.description}
-               />;
+            {videoList.map((item, index) => {
+              return (
+                <Card
+                  key={index}
+                  static="19.5vw"
+                  index={index}
+                  id={item._id}
+                  duration={item.duration}
+                  length={item.length}
+                  thumbnail={item.thumbnail}
+                  url={item.url}
+                  date={item.date}
+                  uploadby={item.uploadedBy}
+                  title={item.title}
+                  description={item.description}
+                />
+              );
             })}
           </div>
         </main>

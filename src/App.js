@@ -3,6 +3,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Header from './Components/Common/Header'
 import Home from './Components/Home/Home'
 import './App.css'
+import "antd/dist/antd.css";
 import Sidebar from './Components/Common/Sidebar'
 import { Route, Routes } from 'react-router-dom'
 import SingleVideo from './Components/Common/SingleVideo'

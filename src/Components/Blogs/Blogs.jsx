@@ -3,13 +3,14 @@ import HeadingStrip from "../Common/HeadingStrip";
 import BlogCard from "./BlogCard";
 import "../../Assets/Css/blog.css";
 import { getBlogs } from "../Api/Api";
+import { Pagination } from "antd";
 
 function Blogs() {
   const [blogs, setBlogs] = useState([]);
   const [page, setPage] = useState(0);
   const [maxPage, setMaxPage] = useState(-1);
 
-  const fetchBlogs = async () => {
+  const fetchBlogs = async (page) => {
     try {
       const res = await getBlogs(page);
       setBlogs(res.data.data);
@@ -18,9 +19,13 @@ function Blogs() {
       console.log(e);
     }
   };
+  const handlePageChange = (clickedPage) => {
+    fetchBlogs(clickedPage - 1);
+    setPage(clickedPage - 1);
+  };
 
   useEffect(() => {
-    fetchBlogs();
+    fetchBlogs(0);
   }, []);
 
   return (
@@ -31,9 +36,12 @@ function Blogs() {
               Blogs
             </h4>
             <div>
-              {Array.apply(null, Array(maxPage + 1)).map(function (x, i) {
-                return <span className="m-1">{i}</span>;
-              })}
+            <Pagination
+                current={page + 1}
+                total={30}
+                defaultPageSize={10}
+                onChange={handlePageChange}
+              />
             </div>
           </div>
         <main className="  d-flex flex-wrap">

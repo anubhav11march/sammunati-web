@@ -1,3 +1,10 @@
+.video-container{
+   
+    background-color: #000;
+}
+.video-js{
+    margin: 0 auto;
+}
 .video-detail-head h3{
     font-size: 1.5rem;
     font-weight: 600;

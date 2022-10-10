@@ -1,9 +1,12 @@
 import axios from "axios";
-let token = JSON.parse(localStorage.getItem("accessToken"));
-console.log(token);
+
+let token = JSON.parse(localStorage.getItem("accessToken")) || "";
+
+
 const API = axios.create({
   baseURL: "https://samunnatibackend.herokuapp.com",
 });
+
 const SecuredAPI = axios.create({
   baseURL:
     "https://cors-everywhere.herokuapp.com/https://samunnatibackend.herokuapp.com",
@@ -11,8 +14,20 @@ const SecuredAPI = axios.create({
     token: `${token}`,
   },
 });
-// signup
-//content
+
+
+SecuredAPI.interceptors.response.use(function (response) {
+  // Any status code that lie within the range of 2xx cause this function to trigger
+  return response;
+}, function (error) {
+  // Any status codes that falls outside the range of 2xx cause this function to trigger
+  if( error.response.data.code===401  &&  error.response.data.message==="Authorizatin failed. Please sign in."){
+    window.location.replace(`/login`);
+  }
+  console.log(error);
+  return Promise.reject(error);
+});
+
 
 export const PostUser = (data) => API.post("/api/user/signup", data);
 export const LoginUser = (data) => API.post("/api/user/signin", data);
@@ -42,4 +57,13 @@ export const getBlogs= (page) => {
       blogIndex: page,
     },
   });
+};
+
+export const getBlog= (id) => {
+  return API.get(`api/user/blog/${id}`);
+};
+
+
+export const likeBlog= (values) => {
+  return SecuredAPI.put(`api/user/blog`, values);
 };
