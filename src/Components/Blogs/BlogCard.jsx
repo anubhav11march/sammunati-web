@@ -9,6 +9,7 @@ import cardImage from "../../Assets/Images/cardImage.jpg";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShareIcon from "@mui/icons-material/Share";
 import { useNavigate } from "react-router-dom";
+import "../../Assets/Css/blog.css"
 
 export default function BlogCard(props) {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ export default function BlogCard(props) {
           <Typography gutterBottom variant="h5" component="div">
             {props.item.title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" className="blog-card-description">
             {props.item.content}
           </Typography>
         </CardContent>
