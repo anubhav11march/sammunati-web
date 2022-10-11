@@ -11,7 +11,7 @@ function Categories() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [videoList, setVideoList] = useState([]);
   const [page, setPage] = useState(0);
-  const [maxPage, setMaxPage] = useState(-1);
+  const [totalCount, setTotalCount] = useState(0);
 
   const handleCategory = (item) => {
     setSelectedCategory(item);
@@ -30,7 +30,7 @@ function Categories() {
     try {
       const res = await getVideosByCategory(page, selectedCategory);
       setVideoList(res.data.data);
-      setMaxPage(res.data.pageLimit);
+      setTotalCount(res.data.pageLimit);
     } catch (e) {
       console.log(e);
     }
@@ -86,7 +86,7 @@ function Categories() {
             <div className="d-flex justify-content-center align-items-center">
               <Pagination
                 current={page + 1}
-                total={30}
+                total={totalCount}
                 defaultPageSize={10}
                 onChange={handlePageChange}
               />
@@ -97,7 +97,6 @@ function Categories() {
               return (
                 <Card
                   key={index}
-                  static="19.5vw"
                   index={index}
                   id={item._id}
                   duration={item.duration}

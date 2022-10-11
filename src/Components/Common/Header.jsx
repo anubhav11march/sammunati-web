@@ -14,9 +14,10 @@ import {IconButton} from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { GetUser } from '../Api/Api';
-
+import useAuth from "../hooks/useAuth"
 
 function Header({langChange}) {
+    const {auth , user} =useAuth();
     const [isLoggedIn, setisLoggedIn] = useState(false);
     const [loginData, setloginData] = useState();
     const navigate = useNavigate()
@@ -36,8 +37,7 @@ const handleClick = (newPlacement) => (event) => {
 };
 
 useEffect(() => {
-        let data = localStorage.getItem('token');
-        if(data){
+        if(auth){
             setisLoggedIn(true)
             const calldata = async()=>{
                 try {
@@ -48,7 +48,10 @@ useEffect(() => {
                 }
             }
             calldata()
-            setloginData(JSON.parse(data))
+            setloginData(user)
+        }
+        else{
+            
         }
     }, []
 )

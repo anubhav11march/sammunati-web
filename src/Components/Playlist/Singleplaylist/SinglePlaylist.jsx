@@ -12,13 +12,6 @@ function SinglePlaylist() {
                         <HeadingStrip head={"Playlists > How to process with tree grafting without..."} sub={false} subhead={"Playlist"} />
                         <div className='d-flex flex-wrap mt-3'>
                             <Card />
-                            <Card />
-                            <Card />
-                            <Card />
-                            <Card />
-                            <Card />
-                            <Card />
-                            <Card />
                         </div>
                     </div>
 

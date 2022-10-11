@@ -1,10 +1,13 @@
 const useAuth = () => {
   const token =  JSON.parse(localStorage.getItem('accessToken'));
+  const userData=JSON.parse(localStorage.getItem('token'));
   let auth = null;
-  if (token) {
+  let user=null;
+  if (token && userData) {
     auth=token
+    user=userData
   }
-  return { auth };
+  return { auth,user };
 };
 
 export default useAuth;

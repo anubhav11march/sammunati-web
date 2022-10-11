@@ -9,7 +9,7 @@ const API = axios.create({
 
 const SecuredAPI = axios.create({
   baseURL:
-    "https://cors-everywhere.herokuapp.com/https://samunnatibackend.herokuapp.com",
+    "https://samunnatibackend.herokuapp.com",
   headers: {
     token: `${token}`,
   },
@@ -22,6 +22,8 @@ SecuredAPI.interceptors.response.use(function (response) {
 }, function (error) {
   // Any status codes that falls outside the range of 2xx cause this function to trigger
   if( error.response.data.code===401  &&  error.response.data.message==="Authorizatin failed. Please sign in."){
+    localStorage.removeItem('token');
+    localStorage.removeItem('accessToken');
     window.location.replace(`/login`);
   }
   console.log(error);
@@ -63,7 +65,15 @@ export const getBlog= (id) => {
   return API.get(`api/user/blog/${id}`);
 };
 
+export const getPlaylist= () => {
+  return API.get(`api/user/video/playlists`);
+};
+
 
 export const likeBlog= (values) => {
   return SecuredAPI.put(`api/user/blog`, values);
+};
+
+export const likeVideo= (values) => {
+  return SecuredAPI.put(`api/user/videoStat`, values);
 };

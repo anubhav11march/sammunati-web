@@ -41,12 +41,13 @@ function Singleblog() {
         </main>
         <div className="d-flex container my-4">
           <Button
-            size="small text-dark d-flex align-items-center"
+            size="small"
+            className="text-dark d-flex align-items-center"
             onClick={handleLike}
           >
-            <FavoriteBorderIcon /> <p className="ps-2">{info?.likes}</p>
+            <FavoriteBorderIcon /> <span>{info?.likes}</span>
           </Button>
-          <Button size="small text-dark  align-self-flex-end">
+          <Button size="small" className="text-dark  align-self-flex-end">
             <ShareIcon />
           </Button>
         </div>

@@ -3,28 +3,28 @@ import '../../Assets/Css/playlistcard.css'
 import cardImage from '../../Assets/Images/cardImage.jpg'
 import { useNavigate } from 'react-router-dom'
 import LiveTvIcon from '@mui/icons-material/LiveTv';
+import { formatSecondsOtherFormat } from '../Helper/helperFunctions';
   
-function PlaylistCard() {
+function PlaylistCard({item}) {
     const navigate = useNavigate();
     return (
         <>
             <div onClick={() => navigate('/playlist/123')} className="card position-relative me-4 mb-4 " style={{ maxWidth: 250, cursor: "pointer" }}>
-                <img className="card-img-top" src={cardImage} alt="Card image cap" />
-                <span className='playlistcard-video-size'>
-                     <p>23</p>
-
+                <img className="card-img-top" src={item?.thumbnail} alt="Card image cap" />
+                <div className='playlistcard-video-size'>
+                     <span>{item?.count}</span>
                      <LiveTvIcon/>
-                </span>
+                </div>
                 <div className="card-body playlistcard-custom-body">
-                    <h5>How to process with tree grafting without damaging the roots</h5>
+                    <h5>{item?._id}</h5>
 
                     {/* <p className="card-text my-2">How to process with tree grafting lorem without damaging</p> */}
 
                     <div className="d-flex my-3 justify-content-between upload-details">
-                        <p className='upload-Text'> 27 Videos</p>
-                        <p>12 Hrs 30 Mins </p>
+                        <p className='upload-Text'>{`${item?.count} ${item?.count>1?"Videos":"Video" }`}</p>
+                        <p>{formatSecondsOtherFormat(item?.duration) }</p>
                     </div>
-                    <button className='btn btn-sm my-2 btn-outline-primary'>45% Complete</button>
+                    {/* <button className='btn btn-sm my-2 btn-outline-primary'>45% Complete</button> */}
                 </div>
             </div>
         </>

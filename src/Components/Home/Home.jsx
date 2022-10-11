@@ -11,7 +11,6 @@ function Home() {
     try {
     
       const data =await GetVideos();
-      console.log(data)
       setfeaturedVideos(data?.data?.data)
     } catch (error) {
       console.log(error)

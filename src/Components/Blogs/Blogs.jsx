@@ -8,13 +8,13 @@ import { Pagination } from "antd";
 function Blogs() {
   const [blogs, setBlogs] = useState([]);
   const [page, setPage] = useState(0);
-  const [maxPage, setMaxPage] = useState(-1);
+  const [totalCount, setTotalCount] = useState(0);
 
   const fetchBlogs = async (page) => {
     try {
       const res = await getBlogs(page);
       setBlogs(res.data.data);
-      setMaxPage(res.data.pageLimit);
+      setTotalCount(res.data.pageLimit);
     } catch (e) {
       console.log(e);
     }
@@ -38,7 +38,7 @@ function Blogs() {
             <div>
             <Pagination
                 current={page + 1}
-                total={30}
+                total={totalCount}
                 defaultPageSize={10}
                 onChange={handlePageChange}
               />
