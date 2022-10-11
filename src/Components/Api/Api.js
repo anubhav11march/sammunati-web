@@ -65,8 +65,17 @@ export const getBlog= (id) => {
   return API.get(`api/user/blog/${id}`);
 };
 
-export const getPlaylist= () => {
+export const getPlaylists= () => {
   return API.get(`api/user/video/playlists`);
+};
+
+export const getPlaylist= (playlist,page) => {
+  return API.get(`api/user/video/playlist`,{
+    params:{
+      playlist:playlist,
+      videoIndex:page,
+    }
+  });
 };
 
 

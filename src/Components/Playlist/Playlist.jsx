@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import "../../Assets/Css/playlist.css";
 import "../../Assets/Css/headingstrip.css";
 import PlaylistCard from "./PlaylistCard";
-import { getPlaylist } from "../Api/Api";
+import { getPlaylists } from "../Api/Api";
 
 function Playlist() {
   const [playlist, setPlaylist] = useState([]);
 
-  const fetchPlaylists = async (page) => {
+  const fetchPlaylists = async () => {
     try {
-      const res = await getPlaylist(page);
+      const res = await getPlaylists();
       setPlaylist(res.data.data);
     } catch (e) {
       console.log(e);
