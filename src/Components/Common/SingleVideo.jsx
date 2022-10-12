@@ -27,7 +27,10 @@ function SingleVideo() {
         autoplay: true,
         controls: true,
         responsive: true,
-        height: "600",
+          playbackRates: [0.5, 1, 1.25, 1.5, 2],
+  width: 720,
+  height: 300,
+
         sources: [
           {
             src: data?.data?.data?.url,
@@ -81,8 +84,8 @@ function SingleVideo() {
             Fullscreen mode
       
     /> */}
-        <div className="video-container">
-          <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+        <div className="video-container" style={{Height:"100px"}}>
+          <VideoJS options={videoJsOptions} onReady={handlePlayerReady} data-setup='{"fluid": true}'/>
         </div>
 
         <main className="video-detail-wrapper container py-5 ">

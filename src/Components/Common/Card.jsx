@@ -13,6 +13,8 @@ function Card(props) {
         navigate(`/videos/${props.id}`);
       }}
     >
+    <div className="position-relative">
+
       <img
         className="card-img-top"
         src={props?.thumbnail}
@@ -21,6 +23,7 @@ function Card(props) {
       <span className="card-video-length">
         {formatSeconds(props?.duration)}
       </span>
+    </div>
 
       <div className="card-body card-custom-body">
         <h5>{props?.title}</h5>

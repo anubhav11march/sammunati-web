@@ -91,9 +91,8 @@ const handleLogout = ()=>{
                             
                             <div className="dropdown mx-3">
                             <select className="form-select w-100  form-select-md " onChange={(e)=>langChange(e.target.value)} aria-label=".form-select-lg example">
-                                    <option >Language</option>
-                                    <option value="hindi" >हिन्दी</option>
                                     <option value="english" >English</option>
+                                    <option value="hindi" >हिन्दी</option>
                                     <option value="marathi" >मराठी</option>
                                     <option value="bandi" >బండి</option>
                                     <option value="tamil" >தமிழ்</option>
