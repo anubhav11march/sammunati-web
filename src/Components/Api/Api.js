@@ -22,8 +22,8 @@ SecuredAPI.interceptors.response.use(function (response) {
 }, function (error) {
   // Any status codes that falls outside the range of 2xx cause this function to trigger
   if( error.response.data.code===401  &&  error.response.data.message==="Authorizatin failed. Please sign in."){
-    localStorage.removeItem('token');
-    localStorage.removeItem('accessToken');
+    // localStorage.removeItem('token');
+    // localStorage.removeItem('accessToken');
     window.location.replace(`/login`);
   }
   console.log(error);
