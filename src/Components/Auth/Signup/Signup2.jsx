@@ -24,7 +24,7 @@ function Signup2(props) {
                     <h4 className='text-center py-2'>Create Your Account</h4>
 
                     <div className="form-outline mb-4">
-                    <label className="form-label" for="form2Example1">Designation</label>
+                    <label className="form-label" for="form2Example1">Designation <span style={{ color: "Red" }}> &nbsp;*</span></label>
                     <select class="form-select form-select-md mb-3" value={props.data?.designation} name="designation" onChange={props.fieldChange} aria-label=".form-select-lg example">
                             <option >None</option>
                             <option value="1">Farmer</option>
@@ -35,12 +35,12 @@ function Signup2(props) {
 
 
                     <div className="form-outline mb-4">
-                        <label className="form-label"  for="form2Example1">Age</label>
+                        <label className="form-label"  for="form2Example1">Age <span style={{ color: "Red" }}> &nbsp;*</span></label>
                         <input type="number" id="form2Example1" value={props.data?.age} name="age" onChange={props.fieldChange} className="form-control" />
                     </div>                    
                     
                     <div className="form-outline mb-4">
-                        <label className="form-label" for="form2Example1">Address </label>
+                        <label className="form-label" for="form2Example1">Address <span style={{ color: "Red" }}> &nbsp;*</span> </label>
                         <textarea class="form-control" name="address" value={props.data?.address} onChange={props.fieldChange} id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
 

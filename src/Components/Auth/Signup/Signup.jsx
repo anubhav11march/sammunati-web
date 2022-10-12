@@ -68,10 +68,12 @@ function Signup() {
 
         try {
             const data = await PostUser(SignupData);
-            console.log(data)
+            // console.log(data)
             // navigate('/login')
+            toast.success("Account Created Successfully!")
         } catch (error) {
-            toast.error(error);
+            console.log(error);
+            toast.error(error.response.data.message);
         }
     }
 
@@ -108,7 +110,7 @@ function Signup() {
                             </div>
 
                             <div className="form-outline mb-4">
-                                <label className="form-label" for="form2Example1">Email </label>
+                                <label className="form-label" for="form2Example1">Email <span style={{ color: "Red" }}> &nbsp;*</span></label>
                                 <input type="email" id="form2Example1" value={SignupData.email} name="email" onChange={handleInput} className="form-control" />
                             </div>
 
@@ -118,7 +120,7 @@ function Signup() {
                             </div>
 
                             <div className="form-outline mb-4">
-                                <label className="form-label"  for="form2Example1">Organisation</label>
+                                <label className="form-label"  for="form2Example1">Organisation <span style={{ color: "Red" }}> &nbsp;*</span></label>
                                 <select class="form-select form-select-md mb-3" name="organisation" onChange={handleInput} aria-label=".form-select-lg example">
                                     <option >Organisation</option>
                                     <option value="1">One</option>
