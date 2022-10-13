@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import "../../Assets/Css/home.css";
 import "../../Assets/Css/headingstrip.css";
 import { Pagination } from "antd";
-import HeadingStrip from "../Common/HeadingStrip";
 import Card from "../Common/Card";
+import { Button } from "antd";
+
 import {
   getAllVideos,
   getFeaturedVideos,
   getMostViewedVideos,
-  GetVideos,
 } from "../Api/Api";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import {
@@ -19,10 +19,14 @@ import {
 } from "../Helper/types";
 
 function Home() {
+  //state for display
+  const [currDisplay, setCurrDisplay] = useState(HOME_VIDEOS);
+
+  //state for videos
   const [featuredVideos, setfeaturedVideos] = useState([]);
   const [mostViewedVideos, setMostViewedVideos] = useState([]);
   const [allVideos, setAllVideos] = useState([]);
-  const [currDisplay, setCurrDisplay] = useState(HOME_VIDEOS);
+
   // States for pagination
   const [featuredPage, setFeaturedPage] = useState(0);
   const [mostViewedPage, setMostViewedPage] = useState(0);
@@ -35,6 +39,7 @@ function Home() {
     try {
       const data = await getFeaturedVideos(page);
       setfeaturedVideos(data?.data?.data);
+
       setTotalFeaturedCount(data?.data?.pageLimit);
     } catch (error) {
       console.log(error);
@@ -70,17 +75,23 @@ function Home() {
       <section className="home-container ps-3">
         <main className="home-wrapper scroller">
           {/* featured video */}
+
           {currDisplay === HOME_VIDEOS || currDisplay === FEATURED_VIDEOS ? (
             <div>
               <div className="w-100 d-flex justify-content-between headingStrip-wrapper py-2 pe-5">
                 <h4>Featured Videos</h4>
                 {currDisplay === HOME_VIDEOS ? (
-                  <h5 onClick={() => setCurrDisplay(FEATURED_VIDEOS)}>
+                  <h5
+                    className="pointer"
+                    onClick={() => setCurrDisplay(FEATURED_VIDEOS)}
+                  >
                     View all featured videos <KeyboardArrowRightIcon />
                   </h5>
                 ) : (
-                  <div>
-                    <div onClick={() => setCurrDisplay(HOME_VIDEOS)}> Back</div>
+                  <div className="d-flex gap-2">
+                    <Button onClick={() => setCurrDisplay(HOME_VIDEOS)}>
+                      Back
+                    </Button>
                     <Pagination
                       current={featuredPage + 1}
                       total={totalFeaturedCount}
@@ -95,6 +106,7 @@ function Home() {
               </div>
               <div className="d-flex flex-wrap ">
                 {featuredVideos?.map((item, index) => {
+                  if (currDisplay === HOME_VIDEOS && index >= 4) return null;
                   return (
                     <Card
                       index={index}
@@ -122,12 +134,17 @@ function Home() {
               <div className="w-100 d-flex justify-content-between headingStrip-wrapper py-2 pe-5">
                 <h4>Most Viewed Videos</h4>
                 {currDisplay === HOME_VIDEOS ? (
-                  <h5 onClick={() => setCurrDisplay(MOST_VIEWED_VIDEOS)}>
+                  <h5
+                    className="pointer"
+                    onClick={() => setCurrDisplay(MOST_VIEWED_VIDEOS)}
+                  >
                     View all most viewed videos <KeyboardArrowRightIcon />
                   </h5>
                 ) : (
-                  <div>
-                    <div onClick={() => setCurrDisplay(HOME_VIDEOS)}> Back</div>
+                  <div className="d-flex gap-2">
+                    <Button onClick={() => setCurrDisplay(HOME_VIDEOS)}>
+                      Back
+                    </Button>
                     <Pagination
                       current={mostViewedPage + 1}
                       total={totalMostViewedCount}
@@ -142,6 +159,7 @@ function Home() {
               </div>
               <div className="d-flex flex-wrap ">
                 {mostViewedVideos?.map((item, index) => {
+                  if (currDisplay === HOME_VIDEOS && index >= 4) return null;
                   return (
                     <Card
                       index={index}
@@ -169,12 +187,18 @@ function Home() {
               <div className="w-100 d-flex justify-content-between headingStrip-wrapper py-2 pe-5">
                 <h4>All Videos</h4>
                 {currDisplay === HOME_VIDEOS ? (
-                  <h5 onClick={() => setCurrDisplay(ALL_VIDEOS)}>
+                  <h5
+                    className="pointer"
+                    onClick={() => setCurrDisplay(ALL_VIDEOS)}
+                  >
                     View all videos <KeyboardArrowRightIcon />
                   </h5>
                 ) : (
-                  <div>
-                    <div onClick={() => setCurrDisplay(HOME_VIDEOS)}> Back</div>
+                  <div className="d-flex gap-2">
+                    <Button onClick={() => setCurrDisplay(HOME_VIDEOS)}>
+                      {" "}
+                      Back
+                    </Button>
                     <Pagination
                       current={allVideoPage + 1}
                       total={totalAllVideoCount}
@@ -189,6 +213,7 @@ function Home() {
               </div>
               <div className="d-flex flex-wrap ">
                 {allVideos?.map((item, index) => {
+                  if (currDisplay === HOME_VIDEOS && index >= 4) return null;
                   return (
                     <Card
                       index={index}
