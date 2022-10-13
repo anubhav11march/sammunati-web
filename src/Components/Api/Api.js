@@ -38,7 +38,6 @@ export const GetUser = () => SecuredAPI.get("/api/user");
 export const UpdateUser = (data) => SecuredAPI.put("/api/user/", data);
 export const AddQuery = (data) => API.post("/api/user/query", data);
 
-export const GetVideos = () => API.get("/api/user/video/category?videoIndex=0");
 
 export const GetVideosById = (id) => API.get(`/api/user/video/${id}`);
 
@@ -78,6 +77,28 @@ export const getPlaylist= (playlist,page) => {
   });
 };
 
+export const getFeaturedVideos= (page) => {
+  return API.get(`api/user/video/featured`,{
+    params:{
+      videoIndex:page,
+    }
+  });
+};
+export const getMostViewedVideos= (page) => {
+  return API.get(`api/user/video/mostViewed`,{
+    params:{
+      videoIndex:page,
+    }
+  });
+};
+export const getAllVideos= (page) => {
+  return API.get(`api/user/video/getAll`,{
+    params:{
+      videoIndex:page,
+    }
+  });
+};
+
 
 export const likeBlog= (values) => {
   return SecuredAPI.put(`api/user/blog`, values);
@@ -86,3 +107,4 @@ export const likeBlog= (values) => {
 export const likeVideo= (values) => {
   return SecuredAPI.put(`api/user/videoStat`, values);
 };
+
