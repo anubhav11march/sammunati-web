@@ -23,7 +23,7 @@ API.interceptors.response.use(
     ) {
       // localStorage.removeItem('token');
       // localStorage.removeItem('accessToken');
-      // window.location.replace(`/login`);
+      window.location.replace(`/login`);
     }
     console.log(error);
     return Promise.reject(error);

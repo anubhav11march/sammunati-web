@@ -41,7 +41,7 @@ function Sidebar() {
 
                         <Link to={'/categories'} className={`sidebar-content-links ${location.pathname ==="/categories" ? ("active-block"):(null)} `}>
                             <ListIcon className={`${location.pathname ==="/categories" ? ("active-icon"):(null)}`}/>
-                            <h6>Categories</h6>
+                            <h6>{t("categories")}</h6>
                         </Link>
 
                         <Link to={'/blogs'} className={`sidebar-content-links ${location.pathname ==="/blogs" ? ("active-block"):(null)} `}>
