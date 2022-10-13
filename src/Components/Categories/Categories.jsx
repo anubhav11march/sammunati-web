@@ -3,6 +3,7 @@ import "../../Assets/Css/category.css";
 import "../../Assets/Css/headingstrip.css";
 import "../../Assets/Css/pagination.css";
 import { getCategoriesList, getVideosByCategory } from "../Api/Api";
+import { useTranslation } from 'react-i18next';
 import Card from "../Common/Card";
 import { Pagination } from "antd";
 
@@ -12,6 +13,7 @@ function Categories() {
   const [videoList, setVideoList] = useState([]);
   const [page, setPage] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
+  const { t } = useTranslation(["main"]);
 
   const handleCategory = (item) => {
     setSelectedCategory(item);
@@ -52,7 +54,7 @@ function Categories() {
     <>
       <section className="category-wrapper d-flex">
         <main className="categoryList ">
-          <h5 className="p-3 pb-0">Categories</h5>
+          <h5 className="p-3 pb-0"> {t('categories')}  </h5>
           <hr />
           <ul className="px-2 scroller">
             <li
@@ -61,7 +63,7 @@ function Categories() {
               }  `}
               onClick={() => handleCategory("")}
             >
-              All
+            {t('All')}
             </li>
             {categoriesList.map((item, i) => {
               return (
@@ -81,7 +83,7 @@ function Categories() {
         <main className="category-card-wrapper px-4">
           <div className="w-100 d-flex justify-content-between headingStrip-wrapper py-2 pe-5">
             <h4>
-              Category: {selectedCategory === "" ? "All" : selectedCategory}
+           {t('categories')}       : {selectedCategory === "" ? `${t('All')}` : selectedCategory}
             </h4>
             <div className="d-flex justify-content-center align-items-center">
               <Pagination

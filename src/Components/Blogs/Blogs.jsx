@@ -4,10 +4,12 @@ import BlogCard from "./BlogCard";
 import "../../Assets/Css/blog.css";
 import { getBlogs } from "../Api/Api";
 import { Pagination } from "antd";
+import { useTranslation } from 'react-i18next';
 
 function Blogs() {
   const [blogs, setBlogs] = useState([]);
   const [page, setPage] = useState(0);
+  const { t } = useTranslation(["main"]);
   const [totalCount, setTotalCount] = useState(0);
 
   const fetchBlogs = async (page) => {
@@ -33,7 +35,7 @@ function Blogs() {
       <section className="w-100 scroller blog-wrapper ps-3">
       <div className="w-100 d-flex justify-content-between headingStrip-wrapper py-2 pe-5">
             <h4>
-              Blogs
+            {t("Blogs")} 
             </h4>
             <div>
             <Pagination

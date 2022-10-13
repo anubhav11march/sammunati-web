@@ -40,7 +40,7 @@ function Sidebar() {
 
                         <Link to={'/blogs'} className={`sidebar-content-links ${location.pathname ==="/blogs" ? ("active-block"):(null)} `}>
                             <ArticleIcon className={`${location.pathname ==="/blogs" ? ("active-icon"):(null)}`}/>
-                            <h6>Blogs</h6>
+                            <h6>{t('Blogs')}</h6>
                         </Link>
                     </nav>
 
@@ -49,15 +49,15 @@ function Sidebar() {
                     <nav className='sidebar-content-help-nav'>
                         <Link to={'/query'} className={`sidebar-content-help-links ${location.pathname ==="/query" ? ("active-block"):(null)} `}>
                             <QuestionAnswerIcon className={`${location.pathname ==="/query" ? ("active-icon"):(null)}`}/>
-                            <h6>Query</h6>
+                            <h6>{t('Query')}</h6>
                         </Link>
                         <Link to={'/faq'} className={`sidebar-content-help-links ${location.pathname ==="/faq" ? ("active-block"):(null)} `}>
                             <ContactSupportIcon className={`${location.pathname ==="/faq" ? ("active-icon"):(null)}`}/>
-                            <h6>FAQ</h6>
+                            <h6 className='text-center'>{t('Faq')}</h6>
                         </Link>
                         <Link to={'/contactus'} className={`sidebar-content-help-links ${location.pathname ==="/contactus" ? ("active-block"):(null)} `}>
                             <PhoneIcon className={`${location.pathname ==="/contactus" ? ("active-icon"):(null)}`}/>
-                            <h6>Contact Us</h6>
+                            <h6>{t('Contact us')}</h6>
                         </Link>
                     </nav>
 

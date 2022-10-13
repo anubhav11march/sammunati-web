@@ -3,6 +3,7 @@ import "../../../Assets/Css/playlist.css";
 import { Pagination } from "antd";
 import Card from "../../Common/Card";
 import { getPlaylist } from "../../Api/Api";
+import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
@@ -10,6 +11,8 @@ import { useNavigate } from "react-router-dom";
 function SinglePlaylist() {
   const [videoList, setVideoList] = useState([]);
   const [page, setPage] = useState(0);
+  const { t } = useTranslation(["main"]);
+
   const [totalCount, setTotalCount] = useState(0);
   const param = useParams();
   const currId = param?.id;
@@ -38,7 +41,7 @@ function SinglePlaylist() {
         <main className="playlist-wrapper scroller">
           <div className="mb-5">
             <div className="w-100 d-flex justify-content-between headingStrip-wrapper py-2 pe-5">
-              <h4> <IconButton onClick={()=>navigate('/playlist')}><ArrowBack/></IconButton> Playlist : {currId}</h4>
+              <h4> <IconButton onClick={()=>navigate('/playlist')}><ArrowBack/></IconButton>{t('playlist')}  : {currId}</h4>
               <div className="d-flex justify-content-center align-items-center">
                 <Pagination
                   current={page + 1}

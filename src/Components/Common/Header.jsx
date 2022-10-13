@@ -23,7 +23,7 @@ function Header({ langChange }) {
   const [isLoggedIn, setisLoggedIn] = useState(false);
   const [loginData, setloginData] = useState();
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation(["main"]);
   // notification
   const [open, setOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -91,7 +91,7 @@ function Header({ langChange }) {
                 <input
                   className="form-control me-2 "
                   type="search"
-                  placeholder="Search all videos"
+                  placeholder={`${t("Search all videos")}`}
                   aria-label="Search"
                 />
               </form>
@@ -138,12 +138,12 @@ function Header({ langChange }) {
                     }}
                   >
                     <MenuItem onClick={() => navigate("/editprofile")}>
-                      Profile
+                    {t("Profile")}  
                     </MenuItem>
                     <MenuItem onClick={() => navigate("/changepassword")}>
-                      Change Password
+                    {t("Change Password")} 
                     </MenuItem>
-                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                    <MenuItem onClick={handleLogout}> {t("Logout")}  </MenuItem>
                   </Menu>
                 </div>
               ) : (
@@ -151,7 +151,7 @@ function Header({ langChange }) {
                   onClick={() => navigate("/login")}
                   className="btn  btn-outline-secondary mx-3"
                 >
-                  Sign In
+                  {t("signin")}
                 </button>
               )}
             </div>

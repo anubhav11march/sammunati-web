@@ -6,9 +6,12 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { LoginUser } from "../Api/Api";
 import toast, { Toaster } from "react-hot-toast";
+import { useTranslation } from 'react-i18next';
 
 function Login() {
   const navigate = useNavigate();
+  const { t } = useTranslation(["main"]);
+
   const [LoginData, setLoginData] = useState({
     name: "",
     password: "",
@@ -61,13 +64,13 @@ function Login() {
             <img src={logo} alt="No-Img" />
           </div>
 
-          <p className="text-center py-2">Welcome Back</p>
+          <p className="text-center py-2">{t("Welcome back")} </p>
 
-          <h4 className="text-center py-2">Login Into Your Account</h4>
+          <h4 className="text-center py-2">{t("Login into your account")} </h4>
 
           <div className="form-outline mb-4">
             <label className="form-label" for="form2Example1">
-              Email{" "}
+             {t("Email")} {" "}
             </label>
             <input
               type="email"
@@ -80,7 +83,7 @@ function Login() {
 
           <div className="form-outline mb-4">
             <label className="form-label" for="form2Example2">
-              Password
+             {t("Password")} 
             </label>
             <input
               type="password"
@@ -102,15 +105,15 @@ function Login() {
                   checked
                 />
                 <label className="form-check-label" for="form2Example31">
-                  {" "}
-                  Remember me{" "}
+                  {t("Remember me")}
+                 {" "}
                 </label>
               </div>
             </div>
 
             <div className="col">
               <a href="#!" className="text-decoration-none">
-                Forgot password?
+                {t("Forgot password")}
               </a>
             </div>
           </div>
@@ -120,9 +123,8 @@ function Login() {
             onClick={handleSubmit}
             className="btn text-white  w-100 py-2 mb-4"
             style={{ backgroundColor: "rgba(4, 195, 92, 1)" }}
-          >
-            Login Now
-          </button>
+          >{t("signin")}
+           </button>
           {/* <button type="button" className="btn text-white d-flex py-2 align-items-center justify-content-center google-button  w-100 mb-4" style={{backgroundColor:"rgba(45, 55, 72, 1)"}}>
                 <img src={Googlelogo} alt="" />
                 Or sign-in with google</button> */}

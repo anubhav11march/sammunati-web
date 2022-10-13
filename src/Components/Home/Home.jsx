@@ -4,6 +4,7 @@ import "../../Assets/Css/headingstrip.css";
 import { Pagination } from "antd";
 import Card from "../Common/Card";
 import { Button } from "antd";
+import { useTranslation } from 'react-i18next';
 
 import {
   getAllVideos,
@@ -34,6 +35,7 @@ function Home() {
   const [totalFeaturedCount, setTotalFeaturedCount] = useState(0);
   const [totalMostViewedCount, setTotalMostViewedCount] = useState(0);
   const [totalAllVideoCount, setTotalAllVideoCount] = useState(0);
+  const { t } = useTranslation(["main"]);
 
   const fetchFeaturedVideos = async (page) => {
     try {
@@ -79,13 +81,13 @@ function Home() {
           {currDisplay === HOME_VIDEOS || currDisplay === FEATURED_VIDEOS ? (
             <div>
               <div className="w-100 d-flex justify-content-between headingStrip-wrapper py-2 pe-5">
-                <h4>Featured Videos</h4>
+                <h4>{t("Featured videos")} </h4>
                 {currDisplay === HOME_VIDEOS ? (
                   <h5
                     className="pointer"
                     onClick={() => setCurrDisplay(FEATURED_VIDEOS)}
-                  >
-                    View all featured videos <KeyboardArrowRightIcon />
+                  >{t("View All Featured Videos")}
+                     <KeyboardArrowRightIcon />
                   </h5>
                 ) : (
                   <div className="d-flex gap-2">
@@ -132,13 +134,13 @@ function Home() {
           {currDisplay === HOME_VIDEOS || currDisplay === MOST_VIEWED_VIDEOS ? (
             <div>
               <div className="w-100 d-flex justify-content-between headingStrip-wrapper py-2 pe-5">
-                <h4>Most Viewed Videos</h4>
+                <h4>{t("Most viewed videos")}</h4>
                 {currDisplay === HOME_VIDEOS ? (
                   <h5
                     className="pointer"
                     onClick={() => setCurrDisplay(MOST_VIEWED_VIDEOS)}
                   >
-                    View all most viewed videos <KeyboardArrowRightIcon />
+                    {t("View all most viewed videos")} <KeyboardArrowRightIcon />
                   </h5>
                 ) : (
                   <div className="d-flex gap-2">
@@ -185,13 +187,13 @@ function Home() {
           {currDisplay === HOME_VIDEOS || currDisplay === ALL_VIDEOS ? (
             <div>
               <div className="w-100 d-flex justify-content-between headingStrip-wrapper py-2 pe-5">
-                <h4>All Videos</h4>
+                <h4>{t("All videos")} </h4>
                 {currDisplay === HOME_VIDEOS ? (
                   <h5
                     className="pointer"
                     onClick={() => setCurrDisplay(ALL_VIDEOS)}
                   >
-                    View all videos <KeyboardArrowRightIcon />
+                   {t("View all videos")}  <KeyboardArrowRightIcon />
                   </h5>
                 ) : (
                   <div className="d-flex gap-2">

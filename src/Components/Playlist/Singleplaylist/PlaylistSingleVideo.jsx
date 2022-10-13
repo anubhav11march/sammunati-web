@@ -4,8 +4,11 @@ import '../../../Assets/Css/playlistsinglevideo.css'
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
 import channelLogo from '../../../Assets/Images/cardImage.jpg'
+import { useTranslation } from 'react-i18next';
 import RelatedCards from './RelatedCards';
 function PlaylistSingleVideo() {
+  const { t } = useTranslation(["main"]);
+    
     return (
         <>     
          <section className='flex-column container-fluid px-0  '>
