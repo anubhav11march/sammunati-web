@@ -15,16 +15,15 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { GetUser } from "../Api/Api";
 import useAuth from "../hooks/useAuth";
+import { useTranslation } from "react-i18next";
+import i18n from "i18next";
 
 function Header({ langChange }) {
   const { auth, user } = useAuth();
   const [isLoggedIn, setisLoggedIn] = useState(false);
   const [loginData, setloginData] = useState();
   const navigate = useNavigate();
-  const handleChange = (e) => {
-    console.log(e);
-  };
-
+  const { t, i18n } = useTranslation();
   // notification
   const [open, setOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -52,6 +51,16 @@ function Header({ langChange }) {
       setisLoggedIn(false);
     }
   }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem("i18nextLng")?.length > 2) {
+      i18n.changeLanguage("en");
+    }
+  }, []);
+
+  const handleLanguage = (e) => {
+    i18n.changeLanguage(e.target.value);
+  };
 
   //popper
   const [anchorEl2, setanchorEl2] = React.useState(null);
@@ -92,16 +101,17 @@ function Header({ langChange }) {
               <div className="dropdown mx-3">
                 <select
                   className="form-select w-100  form-select-md "
-                  onChange={(e) => langChange(e.target.value)}
+                  onChange={handleLanguage}
                   aria-label=".form-select-lg example"
+                  value={localStorage.getItem("i18nextLng")}
                 >
-                  <option value="english">English</option>
-                  <option value="hindi">हिन्दी</option>
-                  <option value="marathi">मराठी</option>
+                  <option value="en">English</option>
+                  <option value="hi">हिन्दी</option>
+                  {/* <option value="marathi">मराठी</option>
                   <option value="bandi">బండి</option>
                   <option value="tamil">தமிழ்</option>
                   <option value="arabic">عربى</option>
-                  <option value="urdu">اردو</option>
+                  <option value="urdu">اردو</option> */}
                 </select>
               </div>
 

@@ -9,9 +9,10 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function Sidebar() {
-    
+    const { t } = useTranslation(["main"]);
     const location = useLocation();
     
     // language support 
@@ -30,12 +31,12 @@ function Sidebar() {
                     <nav className="sidebar-content-nav">
                         <Link to={'/'} className={`sidebar-content-links ${location.pathname ==="/" ? ("active-block"):(null)} `}>
                             <VideocamIcon className={`${location.pathname ==="/" ? ("active-icon"):(null)}`}/>
-                            <h6>Home</h6>
+                            <h6>{t("home")}</h6>
                         </Link>
 
                         <Link to={'/playlist'} className={`sidebar-content-links ${location.pathname ==="/playlist" ? ("active-block"):(null)} `}>
                             <SubscriptionsIcon className={`${location.pathname.includes("/playlist") ? ("active-icon"):(null)}`}  />
-                            <h6>Playlist</h6>
+                            <h6>{t("playlist")}</h6>
                         </Link>
 
                         <Link to={'/categories'} className={`sidebar-content-links ${location.pathname ==="/categories" ? ("active-block"):(null)} `}>
