@@ -15,12 +15,6 @@ function Sidebar() {
     const { t } = useTranslation(["main"]);
     const location = useLocation();
     
-    // language support 
-    
-    console.log(location)
-
-
-
     return (
         <>
             <aside className="col-1 sidebar-wrapper mx-3">
