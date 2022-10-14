@@ -37,10 +37,12 @@
     "Remember me.":"Remember me.",
     "Forgot password":"Forgot password",
     "Login now":"Login now",
-    "Don't have an account? Join free today":"Don't have an account? Join free today",
+    "Don't have an account?":"Don't have an account? ",
+    "Join free today":"Join free today",
     "Or signin with google":"Or signin with google",
     "Create your account":"Create your account",
-    "Have an account? Signin":"Have an account? Signin",
+    "Have an account? Signin":"Have an account? ",
+    "Signin":"Sign in",
     "Next":"Next",
     "Step":"Step",
     "Password":"Password",
@@ -52,8 +54,9 @@
     "Logout":"Logout",
     "Views":"Views",
     "Like":"Like",
+    "Password must be 8 characters long":"Password must be 8 characters long",
+    "Password didn't match":"Password didn't match",
     "Dislike":"Dislike",
-
     "signin":"Signin"
 
 }

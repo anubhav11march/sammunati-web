@@ -7,16 +7,18 @@ import { useNavigate } from "react-router-dom";
 import { LoginUser } from "../Api/Api";
 import toast, { Toaster } from "react-hot-toast";
 import { useTranslation } from 'react-i18next';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { Visibility } from "@mui/icons-material";
 
 function Login() {
   const navigate = useNavigate();
   const { t } = useTranslation(["main"]);
-
+  const [spinn, setspinn] = useState(false)
+  const [unmask, setunmask] = useState(false)
   const [LoginData, setLoginData] = useState({
     name: "",
     password: "",
   });
-  console.log(LoginData);
   const Login = async () => {
     try {
       const data = await LoginUser(LoginData);
@@ -35,20 +37,25 @@ function Login() {
       toast.error("Fill Email and Password !");
       return;
     }
+    setspinn(true);
     try {
       const data = await LoginUser(LoginData);
-      if (data?.data?.code === 400) {
-        toast.error("No user Exist");
-      } else if (data?.data?.code === 401) {
-        toast.error("Password Incorrect");
-      }
+      
+      setspinn(false);
+      navigate('/')
       if (data?.data?.code === 200) {
         localStorage.setItem("token", JSON.stringify(data?.data?.data));
         localStorage.setItem("accessToken", data?.data?.accessToken);
         navigate("/");
       }
     } catch (error) {
-      console.log(error);
+      setspinn(false);
+      console.log(error.response)
+      if (error?.response?.status === 400) {
+        toast.error("No user Exist");
+      } else if (error?.response?.status  === 401) {
+        toast.error("Password Incorrect");
+      }
     }
   };
 
@@ -81,21 +88,28 @@ function Login() {
             />
           </div>
 
-          <div className="form-outline mb-4">
+          <div className="form-outline mb-4 position-relative">
             <label className="form-label" for="form2Example2">
              {t("Password")} 
             </label>
             <input
-              type="password"
+              type={unmask ?("text"):("password")}
               id="form2Example2"
               name="password"
               onChange={handleinput}
-              className="form-control"
+              className="form-control "
             />
+            {
+              unmask ?(
+                <VisibilityOffIcon className="eye-icon" onClick={()=>setunmask(false)}/>
+              ):(
+                <Visibility className="eye-icon" onClick={()=>setunmask(true)}/>
+              )
+            }
           </div>
 
           <div className="row mb-4">
-            <div className="col d-flex justify-content-center">
+            <div className="col d-flex ">
               <div className="form-check">
                 <input
                   className="form-check-input"
@@ -111,8 +125,8 @@ function Login() {
               </div>
             </div>
 
-            <div className="col">
-              <a href="#!" className="text-decoration-none">
+            <div className="col " style={{textAlign:"right"}}>
+              <a href="#!" className="text-decoration-none " >
                 {t("Forgot password")}
               </a>
             </div>
@@ -124,6 +138,13 @@ function Login() {
             className="btn text-white  w-100 py-2 mb-4"
             style={{ backgroundColor: "rgba(4, 195, 92, 1)" }}
           >{t("signin")}
+          {
+            spinn ?(
+              <div class="spinner-border mx-2 spinner-border-sm text-light" role="status">
+                <span class="sr-only"></span>
+              </div>
+            ):(null)
+          }
            </button>
           {/* <button type="button" className="btn text-white d-flex py-2 align-items-center justify-content-center google-button  w-100 mb-4" style={{backgroundColor:"rgba(45, 55, 72, 1)"}}>
                 <img src={Googlelogo} alt="" />
@@ -131,8 +152,8 @@ function Login() {
 
           <div className="text-center">
             <p>
-              Dont have an account? &nbsp;
-              <Link to={"/signup"}>Join free today</Link>
+              {t("Don't have an account?")} &nbsp;
+              <Link to={"/signup"}>{t("Join free today")}</Link>
             </p>
           </div>
         </form>
