@@ -1,17 +1,17 @@
-.blog-wrapper{
-    height:87vh;
+.blog-wrapper {
+    height: 87vh;
     width: 100%;
     overflow-x: hidden;
     overflow-y: auto;
 }
-.singleBlog-img-container{
+.singleBlog-img-container {
     height: 60vh;
 }
-.singleBlog-img-container img{
+.singleBlog-img-container img {
     width: 100%;
     height: 100%;
 }
-.blog-card-description{
+.blog-card-description {
     max-height: 8rem;
     overflow: hidden;
     display: block;
@@ -21,4 +21,34 @@
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     white-space: normal;
+}
+.copied {
+    position: relative !important;
+}
+
+.copied::after {
+    content: "Link Copied" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 67px !important;
+    background: #5c81dc !important;
+    color: #fff !important;
+    padding: 4px 3px !important;
+    width: 120px;
+    border-radius: 6px !important;
+    font-size: 15px !important;
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+}
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

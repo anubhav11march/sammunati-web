@@ -5,17 +5,18 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import * as React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../Assets/Css/blog.css";
 
 export default function BlogCard(props) {
+    const [copy, setCopy] = useState(false);
     const navigate = useNavigate();
-
     const webUrl = window.location.origin;
-    console.log(webUrl);
     const copyLink = (id) => {
+        setCopy(true);
         navigator.clipboard.writeText(`${webUrl}/blogs/${id}`);
+        setTimeout(() => setCopy(false), 1500);
     };
 
     return (
@@ -56,8 +57,12 @@ export default function BlogCard(props) {
                 {/* <Button size="small text-dark d-flex align-items-center">
           <FavoriteBorderIcon /> <p className="ps-2">{props.item.likes}</p>
         </Button> */}
-                <Button size="small text-dark  align-self-flex-end">
-                    <ShareIcon onClick={() => copyLink(props.item._id)} />
+                <Button
+                    className={`${copy && "copied"}`}
+                    onClick={() => copyLink(props.item._id)}
+                    size="small text-dark  align-self-flex-end"
+                >
+                    <ShareIcon />
                 </Button>
             </CardActions>
         </Card>
