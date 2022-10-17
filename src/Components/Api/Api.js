@@ -5,6 +5,8 @@ const API = axios.create({
 });
 
 
+
+
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("accessToken")) {
     req.headers["token"] = `${localStorage.getItem("accessToken")}`;
@@ -29,6 +31,8 @@ API.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+
 
 export const PostUser = (data) => API.post("/api/user/signup", data);
 export const LoginUser = (data) => API.post("/api/user/signin", data);
@@ -109,4 +113,14 @@ export const likeBlog = (values) => {
 
 export const likeVideo = (values) => {
   return API.put(`api/user/videoStat`, values);
+};
+
+
+export const uploadPhoto = async (values) => {
+    console.log(values);
+    const data = await axios.post(
+        "https://aws-file-upload-v1.herokuapp.com/api/v2/samunnati/upload/file",
+        values
+    );
+    return data?.data?.link;
 };
