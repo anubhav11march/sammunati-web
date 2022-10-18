@@ -1,6 +1,6 @@
 .video-container{
-   
-    background-color: #000;
+
+    /* background-color: #e; */
 }
 .video-js{
     margin: 0 auto;
@@ -8,7 +8,7 @@
 .video-detail-head h3{
     font-size: 1.5rem;
     font-weight: 600;
-}   
+}
 .video-description figure img{
     height: 50px;
     width: 50px;

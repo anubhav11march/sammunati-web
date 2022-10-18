@@ -6,8 +6,37 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+body{
+  overflow-x:hidden;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.vjs-tech {
+  width: 100vw!important;
+  height: 100%!important;
+}
+.video-container{
+  width: 100vw!important;
+  padding-right:10px;
+}
+.video-js{
+  width: 100vw!important;
+  padding: 0 10px;
+}
+.vjs_video_3-dimensions{
+  height: 720px!important;
+
+}
+.video-js .vjs-control{
+  margin-right: 10px!important;
+}
+
+@media screen and (max-width:"1440px") {
+.vjs_video_3-dimensions {
+    height: 1080px !important;
+  }
+
 }
