@@ -4,7 +4,7 @@ import { Outlet, Route, Routes, useLocation } from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import ChangePassword from "./Components/Auth/ChangePassword";
-// import ForgotPassword from "./Components/Auth/ForgotPassword";
+import ForgotPassword from "./Components/Auth/ForgotPassword";
 import Login from "./Components/Auth/Login";
 import ProtectedRoutes from "./Components/Auth/ProtectedRoutes";
 import Signup from "./Components/Auth/Signup/Signup";
@@ -43,65 +43,42 @@ function App() {
         <Header />
       )}
 
+      <div className="container-fluid px-0 d-flex">
+        <Routes>
+          <Route exact path="/videos/:id" element={<SingleVideo />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/changepassword" element={<ChangePassword />} />
+          <Route exact path="/forgotpassword" element={<ForgotPassword />} />
 
+          <Route
+            exact
+            path="/playlist/:id1/video/:id2"
+            element={<PlaylistSingleVideo />}
+          />
+          <Route exact path="/blogs/:id" element={<Singleblog />} />
 
-          <div className="container-fluid px-0 d-flex">
-              <Routes>
-                  <Route exact path="/videos/:id" element={<SingleVideo />} />
-                  <Route exact path="/login" element={<Login />} />
-                  <Route exact path="/signup" element={<Signup />} />
-                  <Route
-                      exact
-                      path="/changepassword"
-                      element={<ChangePassword />}
-                  />
-                  <Route
-                      exact
-                      path="/forgotpassword"
-                      element={<ForgotPassword />}
-                  />
-
-                  <Route
-                      exact
-                      path="/playlist/:id1/video/:id2"
-                      element={<PlaylistSingleVideo />}
-                  />
-                  <Route exact path="/blogs/:id" element={<Singleblog />} />
-
-                  <Route element={<SidebarLayout />}>
-                      <Route exact path="/" element={<Home />} />
-                      <Route exact path="/playlist" element={<Playlist />} />
-                      <Route
-                          exact
-                          path="/playlist/:id"
-                          element={<SinglePlaylist />}
-                      />
-                      <Route
-                          exact
-                          path="/categories"
-                          element={<Categories />}
-                      />
-                      <Route
-                          exact
-                          path="/search/:searchQuery"
-                          element={<SearchResult />}
-                      />
-                      <Route exact path="/contactus" element={<Contactus />} />
-                      <Route exact path="/query" element={<Query />} />
-                      <Route exact path="/blogs" element={<Blogs />} />
-                      <Route exact path="/faq" element={<Faq />} />
-                      <Route element={<ProtectedRoutes />}>
-                          <Route
-                              exact
-                              path="/editprofile"
-                              element={<EditProfile />}
-                          />
-                      </Route>
-                  </Route>
-              </Routes>
-          </div>
-      </Suspense>
-
+          <Route element={<SidebarLayout />}>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/playlist" element={<Playlist />} />
+            <Route exact path="/playlist/:id" element={<SinglePlaylist />} />
+            <Route exact path="/categories" element={<Categories />} />
+            <Route
+              exact
+              path="/search/:searchQuery"
+              element={<SearchResult />}
+            />
+            <Route exact path="/contactus" element={<Contactus />} />
+            <Route exact path="/query" element={<Query />} />
+            <Route exact path="/blogs" element={<Blogs />} />
+            <Route exact path="/faq" element={<Faq />} />
+            <Route element={<ProtectedRoutes />}>
+              <Route exact path="/editprofile" element={<EditProfile />} />
+            </Route>
+          </Route>
+        </Routes>
+      </div>
+    </Suspense>
   );
 }
 
