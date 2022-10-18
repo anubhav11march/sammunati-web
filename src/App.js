@@ -22,6 +22,7 @@ import PlaylistSingleVideo from "./Components/Playlist/Singleplaylist/PlaylistSi
 import SinglePlaylist from "./Components/Playlist/Singleplaylist/SinglePlaylist";
 import EditProfile from "./Components/Profile/EditProfile";
 import Query from "./Components/Query/Query";
+import SearchResult from "./Components/Search/SearchResult";
 
 function App() {
   const location = useLocation();
@@ -59,6 +60,7 @@ function App() {
                       path="/forgotpassword"
                       element={<ForgotPassword />}
                   />
+
                   <Route
                       exact
                       path="/playlist/:id1/video/:id2"
@@ -78,6 +80,11 @@ function App() {
                           exact
                           path="/categories"
                           element={<Categories />}
+                      />
+                      <Route
+                          exact
+                          path="/search/:searchQuery"
+                          element={<SearchResult />}
                       />
                       <Route exact path="/contactus" element={<Contactus />} />
                       <Route exact path="/query" element={<Query />} />

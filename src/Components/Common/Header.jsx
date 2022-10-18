@@ -24,6 +24,7 @@ function Header({ langChange }) {
     const [open, setOpen] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [placement, setPlacement] = React.useState();
+    const [query, setQuery] = useState("");
 
     const handleClick = (newPlacement) => (event) => {
         setAnchorEl(event.currentTarget);
@@ -76,6 +77,14 @@ function Header({ langChange }) {
         window.location.reload();
     };
 
+    const handleSearch = (e) => {
+        if (!query) return;
+        if (e.key === "Enter") {
+            e.preventDefault();
+            navigate(`/search/${query}`);
+        }
+    };
+
     return (
         <>
             <header className="header-wrapper mb-3">
@@ -91,6 +100,8 @@ function Header({ langChange }) {
                                 <input
                                     className="form-control me-2 "
                                     type="search"
+                                    onChange={(e) => setQuery(e.target.value)}
+                                    onKeyDown={handleSearch}
                                     placeholder={`${t("Search all videos")}`}
                                     aria-label="Search"
                                 />
