@@ -7,4 +7,9 @@
 }
 .upload-Image {
     display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.upload-Image button {
+    width: 25%;
 }

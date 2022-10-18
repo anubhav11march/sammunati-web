@@ -10,6 +10,8 @@ function EditProfile() {
     const [profileData, setprofileData] = useState({});
     const [imgFile, setImgFile] = useState([]);
     const [profilePic, setProfilePic] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [isUpload, setIsUpload] = useState(false);
 
     const handleInput = (e) => {
         const { name, value } = e.target;
@@ -30,8 +32,6 @@ function EditProfile() {
         call();
     }, []);
 
-    console.log(profileData);
-
     const selectImage = (e) => {
         e.preventDefault();
         const imgFile = e.target.files[0];
@@ -39,12 +39,14 @@ function EditProfile() {
     };
 
     const uploadImg = async () => {
+        setLoading(true);
         const formData = new FormData();
         formData.append("file", imgFile);
-        console.log(formData);
         let imageUrl;
         try {
             imageUrl = await uploadPhoto(formData);
+            setLoading(false);
+            setIsUpload(true);
             setProfilePic(imageUrl);
         } catch (error) {
             console.log(error);
@@ -58,6 +60,7 @@ function EditProfile() {
             };
             const updateData = await UpdateUser(newData);
             navigate("/");
+            setIsUpload(false);
         } catch (error) {
             console.log(error);
         }
@@ -73,7 +76,7 @@ function EditProfile() {
                             <div className="col-6">
                                 <label
                                     className="form-label"
-                                    for="form2Example1"
+                                    htmlFor="form2Example1"
                                 >
                                     Profile Picture{" "}
                                     <span style={{ color: "Red" }}>
@@ -87,12 +90,21 @@ function EditProfile() {
                                     className="form-control"
                                 />
                             </div>
-                            <button onClick={() => uploadImg()}>Upload</button>
+                            <button
+                                className="btn btn-warning text-white"
+                                onClick={() => uploadImg()}
+                            >
+                                {loading
+                                    ? "Uploading..."
+                                    : isUpload
+                                    ? "Uploaded"
+                                    : "Upload"}
+                            </button>
                         </div>
                     </div>
 
                     <div className="form-outline mb-4">
-                        <label className="form-label" for="form2Example1">
+                        <label className="form-label" htmlFor="form2Example1">
                             Name
                         </label>
                         <input
@@ -107,7 +119,7 @@ function EditProfile() {
                     </div>
 
                     <div className="form-outline mb-4">
-                        <label className="form-label" for="form2Example1">
+                        <label className="form-label" htmlFor="form2Example1">
                             Email{" "}
                         </label>
                         <input
@@ -122,7 +134,7 @@ function EditProfile() {
                     </div>
 
                     <div className="form-outline mb-4">
-                        <label className="form-label" for="form2Example1">
+                        <label className="form-label" htmlFor="form2Example1">
                             Phone{" "}
                         </label>
                         <input
@@ -136,7 +148,7 @@ function EditProfile() {
                     </div>
 
                     <div className="form-outline mb-4">
-                        <label className="form-label" for="form2Example1">
+                        <label className="form-label" htmlFor="form2Example1">
                             Age
                         </label>
                         <input
@@ -150,11 +162,11 @@ function EditProfile() {
                     </div>
 
                     <div className="form-outline mb-4">
-                        <label className="form-label" for="form2Example1">
+                        <label className="form-label" htmlFor="form2Example1">
                             Designation
                         </label>
                         <select
-                            class="form-select form-select-md mb-3"
+                            className="form-select form-select-md mb-3"
                             id="form2Example1"
                             onChange={handleInput}
                             defaultValue={profileData?.designation}
@@ -169,11 +181,11 @@ function EditProfile() {
                     </div>
 
                     <div className="form-outline mb-4">
-                        <label className="form-label" for="form2Example1">
+                        <label className="form-label" htmlFor="form2Example1">
                             Organisation
                         </label>
                         <select
-                            class="form-select form-select-md mb-3"
+                            className="form-select form-select-md mb-3"
                             onChange={handleInput}
                             id="form2Example1"
                             name="organisation"
