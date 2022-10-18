@@ -17,6 +17,7 @@ function SingleVideo() {
     const [copy, setCopy] = useState(false);
     const [VideoData, setVideoData] = useState([]);
     const [videoJsOptions, setVideoJsOptions] = useState({});
+
     const getData = async () => {
         try {
             const data = await GetVideosById(param?.id);

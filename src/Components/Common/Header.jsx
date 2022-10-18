@@ -121,7 +121,7 @@ function Header({ langChange }) {
                                         onClick={handleClick("bottom-end")}
                                         s
                                     />
-                                    <h5>Hi, {loginData?.name}</h5>
+                                    <h5>Hi! {loginData?.name}</h5>
                                     <IconButton
                                         id="basic-button"
                                         aria-controls={

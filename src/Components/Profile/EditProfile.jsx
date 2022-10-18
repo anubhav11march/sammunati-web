@@ -56,7 +56,7 @@ function EditProfile() {
         try {
             const newData = {
                 ...profileData,
-                profile_pic: profilePic,
+                profile: profilePic,
             };
             const updateData = await UpdateUser(newData);
             navigate("/");

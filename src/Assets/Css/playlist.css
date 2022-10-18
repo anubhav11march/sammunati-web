@@ -1,31 +1,33 @@
-.playlist-container{
+.playlist-container {
     width: 100%;
 }
-.playlist-wrapper{
-    height:87vh;
+.playlist-wrapper {
+    height: 87vh;
     width: 100%;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
-.playlist-related-card  img{
+.playlist-related-card img {
     width: 35%;
     border-radius: 10px 0 0 10px;
 }
-.playlist-related-card{
+.playlist-related-card {
     border-radius: 10px;
     background: rgba(241, 244, 247, 1);
     margin: 20px 0;
 }
-.playlist-related-card-content h6{
-    font-size:1rem;
+.playlist-related-card-content h6 {
+    font-size: 1rem;
     font-weight: 600;
 }
-.playlist-related-card-content p{
+.playlist-related-card-content p {
     font-size: 0.9rem;
 }
-
-.playlist-back{
+.playlist-back {
     border-bottom: 1px solid black;
     padding: 20px 0;
+}
+.now_playing {
+    border: 2px solid #1976d2;
 }

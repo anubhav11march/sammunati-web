@@ -57,5 +57,7 @@
     "Password must be 8 characters long": "Password must be 8 characters long",
     "Password didn't match": "Password didn't match",
     "Dislike": "Dislike",
-    "signin": "Signin"
+    "signin": "Signin",
+    "Send Password": "Send Password",
+    "Forgot Password Note": "Enter your email address we will send a link"
 }
